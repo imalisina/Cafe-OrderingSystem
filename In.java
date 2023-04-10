@@ -45,7 +45,7 @@ public class In
                     - Assigns the input by the user to local variable i
                     - Returns the integer entered by the user
      *  Note: - When the user enters an integer and presses "Enter", a newline character (\n) is added to the input stream, which is not consumed by nextInt().
-              - Consuming this newline character is important because it ensures that the next input operation starts on a new line, avoiding any potential errors or unexpected behavior.
+              - Consuming this newline character is important because it ensures that the next input operation starts on a new line, avoiding any potential errors.
      */       
     public static int nextInt()
     {
@@ -61,7 +61,7 @@ public class In
                     - Assigns the input by the user to local variable d
                     - Returns the double entered by the user
      *  Note: - When the user enters an double and presses "Enter", a newline character (\n) is added to the input stream, which is not consumed by nextDouble().
-              - Consuming this newline character is important because it ensures that the next input operation starts on a new line, avoiding any potential errors or unexpected behavior.
+              - Consuming this newline character is important because it ensures that the next input operation starts on a new line, avoiding any potential errors.
      */     
     public static double nextDouble()
     {
