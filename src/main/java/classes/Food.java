@@ -13,12 +13,12 @@ public class Food extends Item
      * Parameters : name, price, rating, ingredients
      * Description : Alternate constructor
      */
-    public Food(String name, double price, int rating, HashMap<Integer, String> ingredients) 
+    public Food(String name, double price, int rating, Category category, HashMap<Integer, String> ingredients) 
     {
-        super(name, price, rating);
+        super(name, price, rating, category);
         this.ingredients = ingredients;
     }
-    
+
     /*
      * Method Name : getIngredients()
      * Parameters : none
