@@ -2,7 +2,7 @@ package classes;
 
 // import the Scanner class from the java.util package
 import java.util.*;
-public class In
+public class Input
 {
     // Initialise the scanner object "in" with the System.in stream
     private static Scanner in = new Scanner(System.in);
