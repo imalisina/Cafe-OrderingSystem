@@ -1,22 +1,17 @@
 package classes;
 
-// import the HashMap class
-import java.util.HashMap;
 
 public class Food extends Item 
-{
-    // attribute
-    protected HashMap<Integer, String> ingredients = new HashMap<Integer, String>();
-    
+{   
     /*
      * Constructor Name : Food()
      * Parameters : name, price, rating, ingredients
      * Description : Alternate constructor
      */
-    public Food(String name, double price, int rating, Category category, HashMap<Integer, String> ingredients) 
+    public Food(String name, double price, int rating, Category category) 
     {
         super(name, price, rating, category);
-        this.ingredients = ingredients;
+        // this.ingredients = ingredients;
     }
 
     /*
@@ -24,10 +19,10 @@ public class Food extends Item
      * Parameters : none
      * Description : getter/accessor
      */
-    public HashMap<Integer, String> getIngredients() 
-    {
-        return ingredients;
-    }
+    // public HashMap<Integer, String> getIngredients() 
+    // {
+        // return ingredients;
+    // }
 
     /*
      * Method Name : toString()
@@ -37,6 +32,6 @@ public class Food extends Item
     @Override
     public String toString() 
     {
-        return super.toString() + ". The ingredients are: " + ingredients;
+        return super.toString() + ". The ingredients are: "; //ingredients;
     }
 }

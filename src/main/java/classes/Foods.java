@@ -1,12 +1,16 @@
 package classes;
 
+import java.lang.reflect.Array;
+import java.util.HashMap;
 import java.util.LinkedList;
 
-import classes.Drink.category;
 
 public class Foods 
 {
     private LinkedList<Food> allFoods = new LinkedList<Food>();
+
+    // attribute
+    protected HashMap<Integer, String> ingredients = new HashMap<Integer, String>();
 
     public Foods() 
     {
@@ -15,7 +19,8 @@ public class Foods
     
     private void setUpAllFoods()
     {
-        allFoods.add(new Food("Milk Rice", 2.99, 4.0, category.BREAKFAST, ));
+        allFoods.add(new Food("Burger", 2, 5,Category.FASTFOOD));
+        ingredients.put(1, "2x Cheese, 1 Salad, 2 Beef Meat");
     }
     
 }
