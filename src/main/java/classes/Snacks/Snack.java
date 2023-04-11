@@ -1,6 +1,7 @@
 package classes.Snacks;
 
 import classes.*;
+import classes.Enums.Category;
 
 public class Snack extends Item 
 {

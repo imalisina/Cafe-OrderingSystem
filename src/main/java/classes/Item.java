@@ -1,5 +1,7 @@
 package classes;
 
+import classes.Enums.Category;
+
 public abstract class Item 
 {
     // attributes
