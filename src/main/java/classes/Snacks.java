@@ -36,7 +36,7 @@ public class Snacks
     /*
      * Method Name : displayAllSnacks()
      * Parameters : none
-     * Description : display all items that are in the SNACK drinks category
+     * Description : display all the items that are in the SNACK drinks category
      */
     public void displayAllSnacks()
     {
