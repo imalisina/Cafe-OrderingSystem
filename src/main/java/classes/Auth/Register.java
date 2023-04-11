@@ -1,24 +1,16 @@
 package classes.Auth;
 
-import classes.Input;
-
 public class Register {
     // Attributes
     private boolean isFullNameValidated, isUsernameValidated, isEmailValidated, isPasswordValidated = false;
     
     /*
      * Constructor Name : Register()
-     * Parameters : fullName, username, email, password
-     * Description : Alternate constrcutor
+     * Parameters : none
+     * Description : Default constrcutor
     */
     public Register () {
-        // Define temporary variables to store entered values
-        String enteredFullName, enteredUsername, enteredEmail, enteredPassword = "";
-        // Asking questions for registration process
-        // Asking for full name
-        System.out.print("Enter your full name : ");
-        enteredFullName = Input.nextLine();
-        // Asking for 
+        System.out.println("----------- Create New Account ------------");
     }
 
     /*
@@ -26,20 +18,20 @@ public class Register {
      * Parameters : enteredFullName, enteredUsername, enteredEmail, enteredPassword
      * Description : Method to handle input validation operation
     */
-    public void validationHandler(String enteredFullName, String enteredUsername, String enteredEmail, String enteredPassword) {
+    public boolean validationHandler(String enteredFullName, String enteredUsername, String enteredEmail, String enteredPassword) {
         // Invoke validator methods to validate each input field one by one
         validateFullName(enteredFullName);
         validateUsername(enteredUsername);
         validateEmail(enteredEmail);
         validatePassowrd(enteredPassword);
         
-        // Condition to check whether fields are verified are not
+        // Condition to check whether fields are verified or not
         if (isFullNameValidated && isUsernameValidated && isEmailValidated && isPasswordValidated) {
-            System.out.println("[SUCCESS] Account created.");
+            System.out.println("[SUCCESS] Account has been created.");
+            return true;
         } else {
             System.out.println("[ERROR] An error occured, try again !");
-            // Terminate the program
-            System.exit(1);
+            return false;
         }
     }
 
@@ -75,7 +67,7 @@ public class Register {
      * Description : Method to validate email of user
     */
     public void validateEmail(String enteredEmail) {
-        if (enteredEmail.isEmpty() || enteredEmail.equalsIgnoreCase("admin@persinanights/.com")) {
+        if (enteredEmail.isEmpty()) {
             isEmailValidated = false;
         } else {
             isEmailValidated = true;
