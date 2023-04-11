@@ -2,6 +2,7 @@ package classes.Foods;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.ListIterator;
 import classes.Enums.Category;
 
 
@@ -12,6 +13,9 @@ public class Foods
     protected HashMap<Integer, String> ingredients = new HashMap<Integer, String>();
     // LinkedList data for all the Food items
     private LinkedList<Food> allFoods = new LinkedList<Food>();
+    private LinkedList<Food> allBreakfasts = new LinkedList<Food>();
+    private LinkedList<Food> allLunches = new LinkedList<Food>();
+    private LinkedList<Food> allFastFoods = new LinkedList<Food>();
 
     /*
      * Constructor Name : Foods()
@@ -59,50 +63,98 @@ public class Foods
     }
 
     /*
-     * Method Name : displayBreakfastMenu()
+     * Method Name : filterBreakfastMeals()
      * Parameters : none
-     * Description : display all meals that are in the BREAKFAST category
+     * Description : Method to filter and extract only breakfast meals
      */
-    public void displayBreakfastMenu()
+    public void filterBreakfastMeals() 
     {
-        System.out.println("Breakfast Menu:\n");
+        for (Food breakfast : allFoods) {
+            if (Category.BREAKFAST.equals(breakfast.getCategory())) {
+                allBreakfasts.add(breakfast);
+            }
+        }
+    }
 
-        for (int i = 1; i < allFoods.size(); i++) 
-        {
-            if (allFoods.get(i).category == Category.BREAKFAST)
-                System.out.println("[" + ( i ) + "] " + allFoods.get(i).toString() + "\nIngredients: " + ingredients.get(i) + "\n");
+    /*
+     * Method Name : filterLunchMeals()
+     * Parameters : none
+     * Description : Method to filter and extract only lunch meals
+     */
+    public void filterLunchMeals() 
+    {
+        for (Food lunch : allFoods) {
+            if (Category.LUNCH.equals(lunch.getCategory())) {
+                allLunches.add(lunch);
+            }
+        }
+    }
+
+    /*
+     * Method Name : filterFastFoodMeals()
+     * Parameters : none
+     * Description : Method to filter and extract only fastfood meals
+     */
+    public void filterFastFoodMeals() 
+    {
+        for (Food fastfood : allFoods) {
+            if (Category.FASTFOOD.equals(fastfood.getCategory())) {
+                allFastFoods.add(fastfood);
+            }
         }
     }
     
     /*
      * Method Name : displayBreakfastMenu()
      * Parameters : none
+     * Description : display all meals that are in the BREAKFAST category
+     */
+    public void displayBreakfastMenu() 
+    {
+        System.out.println("Breakfast Menu:\n");
+
+        ListIterator<Food> breakfastListIterator = allBreakfasts.listIterator();
+        int i = 0;
+        while (breakfastListIterator.hasNext()) {
+            Food breakfast = breakfastListIterator.next();
+            System.out.println("[" + (i + 1) + "] " + breakfast.toString() + "\n");
+            i++;
+        }
+    }
+
+    /*
+     * Method Name : displayLunchMenu()
+     * Parameters : none
      * Description : display all meals that are in the LUNCH category
      */
-    public void displayLunchMenu()
+    public void displayLunchMenu() 
     {
         System.out.println("Lunch Menu:\n");
 
-        for (int i = 0; i < allFoods.size(); i++) 
-        {
-            if (allFoods.get(i).category == Category.LUNCH)
-                System.out.println("[" + ( i - 2 ) + "] " + allFoods.get(i).toString() + "\nIngredients: " + ingredients.get(i) + "\n");
+        ListIterator<Food> lunchListIterator = allLunches.listIterator();
+        int i = 0;
+        while (lunchListIterator.hasNext()) {
+            Food lunch = lunchListIterator.next();
+            System.out.println("[" + (i + 1) + "] " + lunch.toString() + "\n");
+            i++;
         }
     }
-    
+
     /*
      * Method Name : displayFastFoodMenu()
      * Parameters : none
      * Description : display all meals that are in the FASTFOOD category
      */
-    public void displayFastFoodMenu()
+    public void displayFastFoodMenu() 
     {
         System.out.println("Fastfood Menu:\n");
 
-        for (int i = 0; i < allFoods.size(); i++)
-        {
-            if (allFoods.get(i).category == Category.FASTFOOD)
-                System.out.println("[" + ( i - 7 ) + "] " + allFoods.get(i).toString() + "\nIngredients: " + ingredients.get(i) + "\n");
+        ListIterator<Food> fastfoodListIterator = allFastFoods.listIterator();
+        int i = 0;
+        while (fastfoodListIterator.hasNext()) {
+            Food fastfood = fastfoodListIterator.next();
+            System.out.println("[" + (i + 1) + "] " + fastfood.toString() + "\n");
+            i++;
         }
     }
     
