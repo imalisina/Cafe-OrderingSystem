@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.ListIterator;
 
 import classes.Input;
+import classes.Auth.Login;
 import classes.Auth.Register;
 import classes.Enums.Roles;
 
@@ -18,7 +19,10 @@ public class Users {
     private LinkedList<User> customers = new LinkedList<User>(); 
 
     // An instance of Register class
-    Register createAccount = new Register();
+    Register createAccount;
+
+    // An instance of Login class
+    Login loginToAccount;
 
     // An instance of Input class
     Input input = new Input();
@@ -38,6 +42,9 @@ public class Users {
      * Description : Method to activate registration operation
     */
     public void registerOperation () throws NoSuchAlgorithmException {
+        // Activte Register object
+        createAccount = new Register();
+
         // Define temporary variables to store entered values
         String enteredFullName, enteredUsername, enteredEmail, enteredPassword = "";
         
@@ -68,7 +75,37 @@ public class Users {
         allUsers.add(new User(enteredFullName, enteredUsername, enteredEmail, enteredPassword));
 
         // Create a session for the user
-        createUserSession(enteredUsername, enteredPassword);
+        createUserSession(allUsers.getLast().getUsername(), allUsers.getLast().getEncryptedPassword());
+    }
+
+    /*
+     * Method Name : loginOperation()
+     * Parameters : none
+     * Description : Method to activate login operation
+    */
+    public void loginOperation() throws NoSuchAlgorithmException {
+        // Activate Login object
+        loginToAccount = new Login();
+        
+        // Define temporary variables to store entered values
+        String enteredUsername, enteredPassword = "";
+
+        // Asking questions for login process
+        // Asking for username
+        System.out.print("Enter your username : ");
+        enteredUsername = Input.nextLine();
+        // Asking for password
+        System.out.print("Enter a new password : ");
+        enteredPassword = Input.nextLine();
+
+        // Store the validation result
+        boolean validationResult = loginToAccount.validationHandler(enteredUsername, enteredPassword);
+        
+        // Check the final validation result
+        if (!validationResult) {
+            // Terminate from the program
+            System.exit(1);
+        }
     }
 
     /*
@@ -76,18 +113,19 @@ public class Users {
      * Parameters : validatedUsername, validatedPassword 
      * Description : Method to create a session for user that will be used in further Login requests
     */
-    public void createUserSession(String validatedUsername, String validatePassword) {
+    public void createUserSession(String validatedUsername, String validatedPassword) {
         // Implement a try catch to handle errors during the "File Writing" process
         try {
             // Create buffer writer to perform file writing
             // Specify the file with relative path
-            BufferedWriter writer = new BufferedWriter(new FileWriter("UserSession.txt"));
+            BufferedWriter usernameWriter = new BufferedWriter(new FileWriter("UsernameData.txt"));
+            BufferedWriter passwordWriter = new BufferedWriter(new FileWriter("PasswordData.txt"));
             // Store user's username and password
-            writer.write(validatedUsername);
-            writer.write("\n"+validatePassword);
-            writer.write("\n------------------");
-            // Close the buffer to store the written data
-            writer.close();
+            // Then, close the buffer to store the written data
+            usernameWriter.write(validatedUsername);
+            usernameWriter.close();
+            passwordWriter.write(validatedPassword);
+            passwordWriter.close();
             System.out.println("[INFO] Session has been added.");
         } catch (IOException e) {
             // throw an I/O exception - if any
