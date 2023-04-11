@@ -66,6 +66,6 @@ public class Food extends Item
     @Override
     public String toString() 
     {
-        return "Name: " + name + ", Price: " + price + ", Rating: " + rating + ", Category: " + category;
+        return "Name: " + name + ", Price: " + price + "\nDetails - Rating: " + rating + ", Category: " + category;
     }
 }

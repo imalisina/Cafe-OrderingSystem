@@ -80,6 +80,6 @@ public class Drink extends Item
     @Override
     public String toString() 
     {
-        return "Name: " + name + ", Price: " + price + ", Rating: " + rating + ", Category: " + category + ", Pairing: " + pairing;
+        return "Name: " + name + ", Price: " + price + "\nDetails - Rating: " + rating + ", Category: " + category + "\nPairing: " + pairing;
     }
 }
