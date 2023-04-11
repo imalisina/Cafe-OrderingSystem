@@ -69,8 +69,13 @@ public class Foods
      */
     public void filterBreakfastMeals() 
     {
-        for (Food breakfast : allFoods) {
-            if (Category.BREAKFAST.equals(breakfast.getCategory())) {
+        // Iterate over all meals in the allFood list
+        for (Food breakfast : allFoods) 
+        {
+            // Check if the meal is a breakfast meal
+            if (Category.BREAKFAST.equals(breakfast.getCategory())) 
+            {
+                // if it is breakfast, add it to the allBreakfasts list
                 allBreakfasts.add(breakfast);
             }
         }
@@ -83,8 +88,13 @@ public class Foods
      */
     public void filterLunchMeals() 
     {
-        for (Food lunch : allFoods) {
-            if (Category.LUNCH.equals(lunch.getCategory())) {
+        // Iterate over all meals in the allFood list
+        for (Food lunch : allFoods) 
+        {
+            // Check if the meal is a lunch meal    
+            if (Category.LUNCH.equals(lunch.getCategory())) 
+            {
+                // if it is lunch, add it to the allLunches list
                 allLunches.add(lunch);
             }
         }
@@ -97,8 +107,13 @@ public class Foods
      */
     public void filterFastFoodMeals() 
     {
-        for (Food fastfood : allFoods) {
-            if (Category.FASTFOOD.equals(fastfood.getCategory())) {
+        // Iterate over all meals in the allFood list
+        for (Food fastfood : allFoods) 
+        {
+            // Check if the meal is a fastfood meal
+            if (Category.FASTFOOD.equals(fastfood.getCategory())) 
+            {
+                // if it is fastfood, add it to the allFastFoods list
                 allFastFoods.add(fastfood);
             }
         }
@@ -113,11 +128,18 @@ public class Foods
     {
         System.out.println("Breakfast Menu:\n");
 
+        // Iterator for the allBreakfasts List
         ListIterator<Food> breakfastListIterator = allBreakfasts.listIterator();
+        // initialize counter 
         int i = 0;
-        while (breakfastListIterator.hasNext()) {
+        // iterate over each meal in the list 
+        while (breakfastListIterator.hasNext()) 
+        {
+            // Get the next breakfast meal in the list
             Food breakfast = breakfastListIterator.next();
+            // Display details of the meal
             System.out.println("[" + (i + 1) + "] " + breakfast.toString() + "\n");
+            // increment counter
             i++;
         }
     }
@@ -131,11 +153,18 @@ public class Foods
     {
         System.out.println("Lunch Menu:\n");
 
+        // Iterator for the allLunches List
         ListIterator<Food> lunchListIterator = allLunches.listIterator();
+        // initialize counter 
         int i = 0;
-        while (lunchListIterator.hasNext()) {
+        // iterate over each meal in the list 
+        while (lunchListIterator.hasNext()) 
+        {
+            // Get the next lunch meal in the list
             Food lunch = lunchListIterator.next();
+            // Display details of the meal
             System.out.println("[" + (i + 1) + "] " + lunch.toString() + "\n");
+            // increment counter
             i++;
         }
     }
@@ -149,11 +178,18 @@ public class Foods
     {
         System.out.println("Fastfood Menu:\n");
 
+        // Iterator for the allFastFoods List
         ListIterator<Food> fastfoodListIterator = allFastFoods.listIterator();
+        // initialize counter
         int i = 0;
-        while (fastfoodListIterator.hasNext()) {
+        // iterate over each meal in the list
+        while (fastfoodListIterator.hasNext()) 
+        {
+            // Get the next fast food meal in the list
             Food fastfood = fastfoodListIterator.next();
+            // Display details of the meal
             System.out.println("[" + (i + 1) + "] " + fastfood.toString() + "\n");
+            // increment counter
             i++;
         }
     }

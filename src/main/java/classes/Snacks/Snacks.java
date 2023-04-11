@@ -26,6 +26,7 @@ public class Snacks
      */
     private void snackSeeder()
     {
+        // Create snack objects
         allSnacks.add(new Snack("Falafel", 6.99, Category.SNACK, 4, "Small", 4));
         allSnacks.add(new Snack("Bandari Sausage", 4.99, Category.SNACK, 3, "Medium", 2));
         allSnacks.add(new Snack("Çig Köfte", 3.49, Category.SNACK, 4, "Large", 1));
@@ -43,8 +44,10 @@ public class Snacks
     {
         System.out.println("Snacks Menu:\n");
 
+        // Iterate over each snack in the list
         for (int i = 0; i < allSnacks.size(); i++)
         {
+            // Display snack details
             System.out.println("[" + (i + 1) + "] " + allSnacks.get(i).toString() + "\n");
         }
     }    
