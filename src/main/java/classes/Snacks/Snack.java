@@ -1,16 +1,43 @@
-package classes;
+package classes.Snacks;
 
+import classes.*;
 
-public class Food extends Item 
-{   
+public class Snack extends Item 
+{
+    // attribute
+    protected String size;
+    protected int quantity;
+
     /*
-     * Constructor Name : Food()
-     * Parameters : name, price, rating, category
+     * Constructor Name : Snack()
+     * Parameters : name, price, rating, size, quantity
      * Description : Alternate constructor
      */
-    public Food(String name, double price, int rating, Category category) 
+    public Snack(String name, double price, Category category, int rating, String size, int quantity) 
     {
         super(name, price, rating, category);
+        this.size = size;
+        this.quantity = quantity;
+    }
+
+    /*
+     * Method Name : getSize()
+     * Parameters : none
+     * Description : getter/accessor
+     */
+    public String getSize() 
+    {
+        return size;
+    }
+
+    /*
+     * Method Name : getQuantity()
+     * Parameters : none
+     * Description : getter/accessor
+     */
+    public int getQuantity() 
+    {
+        return quantity;
     }
 
     /*
@@ -65,6 +92,6 @@ public class Food extends Item
     @Override
     public String toString() 
     {
-        return "Name: " + name + ", Price: " + price + ", Rating: " + rating + ", Category: " + category;
+        return "Name: " + name + ", Price: " + price + "\nDetails - Rating: " + rating + ", Category: " + category + "\nSize: " + size + ", Quantity: " + quantity;
     }
 }
