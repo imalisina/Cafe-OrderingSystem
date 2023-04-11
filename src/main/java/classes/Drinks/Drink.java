@@ -1,16 +1,31 @@
-package classes;
+package classes.Drinks;
 
+import classes.*;
 
-public class Food extends Item 
-{   
+public class Drink extends Item 
+{
+    // attributes
+    protected String pairing;
+    
     /*
-     * Constructor Name : Food()
-     * Parameters : name, price, rating, category
+     * Constructor Name : Drink()
+     * Parameters : name, price, rating, pairing
      * Description : Alternate constructor
      */
-    public Food(String name, double price, int rating, Category category) 
+    public Drink(String name, double price, int rating, Category category,String pairing) 
     {
         super(name, price, rating, category);
+        this.pairing = pairing;
+    }
+
+    /*
+     * Method Name : getPairing()
+     * Parameters : none
+     * Description : getter/accessor
+     */
+    public String getPairing() 
+    {
+        return pairing;
     }
 
     /*
@@ -65,6 +80,6 @@ public class Food extends Item
     @Override
     public String toString() 
     {
-        return "Name: " + name + ", Price: " + price + ", Rating: " + rating + ", Category: " + category;
+        return "Name: " + name + ", Price: " + price + ", Rating: " + rating + ", Category: " + category + ", Pairing: " + pairing;
     }
 }

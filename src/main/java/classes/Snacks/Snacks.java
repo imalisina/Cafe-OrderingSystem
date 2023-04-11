@@ -1,6 +1,7 @@
-package classes;
+package classes.Snacks;
 
 import java.util.LinkedList;
+import classes.*;
 
 public class Snacks 
 {

@@ -6,7 +6,7 @@ public abstract class Item
     protected String name;
     protected double price;
     protected int rating;
-    protected Category category;
+    public Category category;
 
     /*
      * Constructor Name : Item()

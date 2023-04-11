@@ -1,4 +1,6 @@
-package classes;
+package classes.Drinks;
+
+import classes.*;
 
 import java.util.LinkedList;
 
