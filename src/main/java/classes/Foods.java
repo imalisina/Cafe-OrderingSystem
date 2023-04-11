@@ -7,7 +7,9 @@ import java.util.LinkedList;
 public class Foods 
 {
     // attributes
+    // Hashmap data for all ingredients for each food item
     protected HashMap<Integer, String> ingredients = new HashMap<Integer, String>();
+    // LinkedList data for all the Food items
     private LinkedList<Food> allFoods = new LinkedList<Food>();
 
     /*
@@ -66,7 +68,7 @@ public class Foods
 
         for (int i = 1; i < allFoods.size(); i++) {
             if (allFoods.get(i).category == Category.BREAKFAST)
-                System.out.println(allFoods.get(i).toString() + "\ningredients: " + ingredients.get(i) + "\n");
+                System.out.println(allFoods.get(i).toString() + "\nIngredients: " + ingredients.get(i) + "\n");
         }
     }
     
@@ -81,7 +83,7 @@ public class Foods
 
         for (int i = 0; i < allFoods.size(); i++) {
             if (allFoods.get(i).category == Category.LUNCH)
-                System.out.println(allFoods.get(i).toString() + "\ningredients: " + ingredients.get(i) + "\n");
+                System.out.println(allFoods.get(i).toString() + "\nIngredients: " + ingredients.get(i) + "\n");
         }
     }
     
@@ -97,7 +99,7 @@ public class Foods
         for (int i = 0; i < allFoods.size(); i++)
         {
             if (allFoods.get(i).category == Category.FASTFOOD)
-                System.out.println(allFoods.get(i).toString() + "\ningredients: " + ingredients.get(i) + "\n");
+                System.out.println(allFoods.get(i).toString() + "\nIngredients: " + ingredients.get(i) + "\n");
         }
     }
     
