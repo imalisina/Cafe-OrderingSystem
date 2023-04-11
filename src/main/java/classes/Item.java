@@ -1,6 +1,6 @@
 package classes;
 
-public class Item 
+public abstract class Item 
 {
     // attributes
     protected String name;
@@ -10,7 +10,7 @@ public class Item
 
     /*
      * Constructor Name : Item()
-     * Parameters : name, price, rating
+     * Parameters : name, price, rating, category
      * Description : Alternate constructor
      */
     public Item(String name, double price, int rating, Category category) 
@@ -20,40 +20,34 @@ public class Item
         this.rating = rating;
         this.category = category;
     }
-    
+
     /*
      * Method Name : getName()
      * Parameters : none
      * Description : getter/accessor
      */
-    public String getName() 
-    {
-        return name;
-    }
+    public abstract String getName();
 
     /*
      * Method Name : getPrice()
      * Parameters : none
      * Description : getter/accessor
      */    
-    public double getPrice() 
-    {
-        return price;
-    }
+    public abstract double getPrice();
 
     /*
      * Method Name : getRating()
      * Parameters : none
      * Description : getter/accessor
      */
-    public int getRating() 
-    {
-        return rating;
-    }
+    public abstract int getRating();
 
-    public Category getCategory() {
-        return category;
-    }
+    /*
+     * Method Name : getCategory()
+     * Parameters : none
+     * Description : getter/accessor
+     */
+    public abstract Category getCategory();
 
     /*
      * Method Name : toString()
@@ -61,9 +55,6 @@ public class Item
      * Description : display attributes of the Item objects
      */
     @Override
-    public String toString() 
-    {
-        return "Item: " + name + " has a price of: " + price + " and a rating of: " + rating;
-    }
+    public abstract String toString();
     
 }

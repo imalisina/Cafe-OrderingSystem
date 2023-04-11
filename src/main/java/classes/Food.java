@@ -5,33 +5,66 @@ public class Food extends Item
 {   
     /*
      * Constructor Name : Food()
-     * Parameters : name, price, rating, ingredients
+     * Parameters : name, price, rating, category
      * Description : Alternate constructor
      */
     public Food(String name, double price, int rating, Category category) 
     {
         super(name, price, rating, category);
-        // this.ingredients = ingredients;
     }
 
     /*
-     * Method Name : getIngredients()
+     * Method Name : getName()
      * Parameters : none
      * Description : getter/accessor
      */
-    // public HashMap<Integer, String> getIngredients() 
-    // {
-        // return ingredients;
-    // }
+    @Override
+    public String getName() 
+    {
+        return name;
+    }
+
+    /*
+     * Method Name : getPrice()
+     * Parameters : none
+     * Description : getter/accessor
+     */    
+    @Override
+    public double getPrice() 
+    {
+        return price;
+    }
+
+    /*
+     * Method Name : getRating()
+     * Parameters : none
+     * Description : getter/accessor
+     */
+    @Override
+    public int getRating() 
+    {
+        return rating;
+    }
+
+    /*
+     * Method Name : getCategory()
+     * Parameters : none
+     * Description : getter/accessor
+     */
+    @Override
+    public Category getCategory() 
+    {
+        return category;
+    }
 
     /*
      * Method Name : toString()
      * Parameters : none
-     * Description : display attributes of the Food objects
+     * Description : display attributes of the Item objects
      */
     @Override
     public String toString() 
     {
-        return super.toString() + ". The ingredients are: "; //ingredients;
+        return "Name: " + name + ", Price: " + price + ", Rating: " + rating + ", Category: " + category;
     }
 }
