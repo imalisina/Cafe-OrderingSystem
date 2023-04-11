@@ -1,4 +1,4 @@
-package classes;
+package classes.Enums;
 
 // ENUM class for the different food categories
 public enum Category

@@ -1,7 +1,7 @@
 package classes.Snacks;
 
 import java.util.LinkedList;
-import classes.*;
+import classes.Enums.Category;
 
 public class Snacks 
 {

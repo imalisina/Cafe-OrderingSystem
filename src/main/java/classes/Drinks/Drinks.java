@@ -1,6 +1,6 @@
 package classes.Drinks;
 
-import classes.*;
+import classes.Enums.Category;
 
 import java.util.LinkedList;
 
