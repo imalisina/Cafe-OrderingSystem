@@ -1,5 +1,11 @@
+import classes.Foods;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        Foods allFoods = new Foods();
+        allFoods.displayBreakfastMenu();
+        allFoods.displayFastFoodMenu();
+        allFoods.displayLunchMenu();
+
     }
 }
