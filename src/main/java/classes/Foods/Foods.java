@@ -1,7 +1,8 @@
-package classes;
+package classes.Foods;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import classes.*;
 
 
 public class Foods 
