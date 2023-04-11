@@ -83,6 +83,15 @@ public class User extends Encryptor {
     }
 
     /*
+     * Method Name : getEncryptedPassword()
+     * Parameters : none
+     * Description : getter/accessor
+    */
+    public String getEncryptedPassword () {
+        return password;
+    }
+
+    /*
      * Method Name : formatTimestamps()
      * Parameters : none
      * Description : method to format the generated timestamps
