@@ -33,15 +33,15 @@ public class Foods
         // Create all Food Items
         allFoods.add(new Food("Milk Rice", 2.99, 4, Category.BREAKFAST));
         allFoods.add(new Food("Sholezad", 3.49, 4, Category.BREAKFAST));
-        allFoods.add(new Food("Pide", 1.99, 4, Category.FASTFOOD));
         allFoods.add(new Food("Pap and Akara", 2.99, 3, Category.BREAKFAST));
-        allFoods.add(new Food("Boerewors", 3.49, 3, Category.FASTFOOD));
         allFoods.add(new Food("Baghali polo", 4.49, 4, Category.LUNCH));
         allFoods.add(new Food("Fesenjan Stew", 2.99, 4, Category.LUNCH));
         allFoods.add(new Food("Döner",3.49, 4, Category.LUNCH));
         allFoods.add(new Food("Kabsa Biryani", 4.49, 5, Category.LUNCH));
-        allFoods.add(new Food("Bunny Chow", 4.49, 5, Category.FASTFOOD));
         allFoods.add(new Food("Jollof Rice", 2.99, 5, Category.LUNCH));
+        allFoods.add(new Food("Pide", 1.99, 4, Category.FASTFOOD));
+        allFoods.add(new Food("Boerewors", 3.49, 3, Category.FASTFOOD));
+        allFoods.add(new Food("Bunny Chow", 4.49, 5, Category.FASTFOOD));
         
         // Create ingredients for each food item
         ingredients.put(1, "Rice, Milk, Vanilla Extract");
