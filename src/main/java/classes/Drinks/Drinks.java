@@ -50,8 +50,13 @@ public class Drinks
      */
     public void filterHotDrinks() 
     {
-        for (Drink hotDrink : allDrinks) {
-            if (Category.HOT.equals(hotDrink.getCategory())) {
+        // Iterate over all drinks in the allDrinks list
+        for (Drink hotDrink : allDrinks) 
+        {
+            // Check if the drink is a hot drink        
+            if (Category.HOT.equals(hotDrink.getCategory())) 
+            {
+                // If the drink is hot, add it to the hotDrinks List
                 hotDrinks.add(hotDrink);
             }
         }
@@ -64,8 +69,13 @@ public class Drinks
      */
     public void filterColdDrinks() 
     {
-        for (Drink coldDrink : allDrinks) {
-            if (Category.HOT.equals(coldDrink.getCategory())) {
+        // Iterate over all drinks in the allDrinks list    
+        for (Drink coldDrink : allDrinks) 
+        {
+            // Check if the drink is a cold drink            
+            if (Category.HOT.equals(coldDrink.getCategory())) 
+            {
+                // If the drink is cold, add it to the coldDrinks List
                 coldDrinks.add(coldDrink);
             }
         }
@@ -80,11 +90,18 @@ public class Drinks
     {
         System.out.println("Hot Drinks Menu:\n");
 
+        // Iterator for the hotDrinks List
         ListIterator<Drink> hotDrinkListIterator = hotDrinks.listIterator();
+        // initialize counter 
         int i = 0;
-        while (hotDrinkListIterator.hasNext()) {
+        // iterate over each drink in the list 
+        while (hotDrinkListIterator.hasNext()) 
+        {
+            // Get the next hot drink in the list
             Drink hotDrink = hotDrinkListIterator.next();
+            // Display details of the drink
             System.out.println("[" + (i + 1) + "] " + hotDrink.toString() + "\n");
+            // increment counter
             i++;
         }
     }
@@ -98,11 +115,18 @@ public class Drinks
     {
         System.out.println("Cold Drinks Menu:\n");
 
+        // Iterator for the hotDrinks List
         ListIterator<Drink> coldDrinkListIterator = coldDrinks.listIterator();
+        // initialize counter
         int i = 0;
-        while (coldDrinkListIterator.hasNext()) {
+        // iterate over each drink in the list 
+        while (coldDrinkListIterator.hasNext()) 
+        {
+            // Get the next cold drink in the list
             Drink coldDrink = coldDrinkListIterator.next();
+            // Display details of the drink
             System.out.println("[" + (i + 1) + "] " + coldDrink.toString() + "\n");
+            // increment counter
             i++;
         }
     }
