@@ -4,10 +4,7 @@ import classes.Input;
 
 public class Register {
     // Attributes
-    private boolean isFullNameValidated = false;
-    private boolean isUsernameValidated = false;
-    private boolean isEmailValidated = false;
-    private boolean isPasswordValidated = false;
+    private boolean isFullNameValidated, isUsernameValidated, isEmailValidated, isPasswordValidated = false;
     
     /*
      * Constructor Name : Register()
@@ -15,15 +12,13 @@ public class Register {
      * Description : Alternate constrcutor
     */
     public Register () {
-        System.out.print("your name :");
-        String name = Input.nextLine();
-        System.out.print("enter username :");
-        String username = Input.nextLine();
-        System.out.print("enter email :");
-        String email = Input.nextLine();
-        System.out.print("enter password :");
-        String password = Input.nextLine();
-        validationHandler(name, username, email, password);
+        // Define temporary variables to store entered values
+        String enteredFullName, enteredUsername, enteredEmail, enteredPassword = "";
+        // Asking questions for registration process
+        // Asking for full name
+        System.out.print("Enter your full name : ");
+        enteredFullName = Input.nextLine();
+        // Asking for 
     }
 
     /*
@@ -32,12 +27,18 @@ public class Register {
      * Description : Method to handle input validation operation
     */
     public void validationHandler(String enteredFullName, String enteredUsername, String enteredEmail, String enteredPassword) {
+        // Invoke validator methods to validate each input field one by one
         validateFullName(enteredFullName);
-
+        validateUsername(enteredUsername);
+        validateEmail(enteredEmail);
+        validatePassowrd(enteredPassword);
+        
+        // Condition to check whether fields are verified are not
         if (isFullNameValidated && isUsernameValidated && isEmailValidated && isPasswordValidated) {
-            System.out.println("account created");
+            System.out.println("[SUCCESS] Account created.");
         } else {
-            System.out.println("error");
+            System.out.println("[ERROR] An error occured, try again !");
+            // Terminate the program
             System.exit(1);
         }
     }
@@ -61,6 +62,36 @@ public class Register {
      * Description : Method to validate username of user
     */
     public void validateUsername(String enteredUsername) {
-        
+        if (enteredUsername.isEmpty() || enteredUsername.equalsIgnoreCase("cafe_admin")) {
+            isUsernameValidated = false;
+        } else {
+            isUsernameValidated = true;
+        }
+    }
+
+    /*
+     * Method Name : validateEmail()
+     * Parameters : enteredEmail
+     * Description : Method to validate email of user
+    */
+    public void validateEmail(String enteredEmail) {
+        if (enteredEmail.isEmpty() || enteredEmail.equalsIgnoreCase("admin@persinanights/.com")) {
+            isEmailValidated = false;
+        } else {
+            isEmailValidated = true;
+        }
+    } 
+
+    /*
+     * Method Name : validatePassword()
+     * Parameters : enteredPassword
+     * Description : Method to validate password of user
+    */
+    public void validatePassowrd(String enteredPassword) {
+        if (enteredPassword.isEmpty() || enteredPassword.length() <= 7) {
+            isPasswordValidated = false;
+        } else {
+            isPasswordValidated = true;
+        } 
     }
 }
