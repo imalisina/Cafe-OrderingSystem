@@ -66,7 +66,8 @@ public class Foods
     {
         System.out.println("Breakfast Menu:\n");
 
-        for (int i = 1; i < allFoods.size(); i++) {
+        for (int i = 1; i < allFoods.size(); i++) 
+        {
             if (allFoods.get(i).category == Category.BREAKFAST)
                 System.out.println("[" + ( i ) + "] " + allFoods.get(i).toString() + "\nIngredients: " + ingredients.get(i) + "\n");
         }
@@ -81,7 +82,8 @@ public class Foods
     {
         System.out.println("Lunch Menu:\n");
 
-        for (int i = 0; i < allFoods.size(); i++) {
+        for (int i = 0; i < allFoods.size(); i++) 
+        {
             if (allFoods.get(i).category == Category.LUNCH)
                 System.out.println("[" + ( i - 2 ) + "] " + allFoods.get(i).toString() + "\nIngredients: " + ingredients.get(i) + "\n");
         }
