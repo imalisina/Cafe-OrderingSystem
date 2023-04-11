@@ -4,6 +4,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
+import classes.Input;
 import classes.Enums.Roles;
 
 public class Users {
@@ -12,11 +13,14 @@ public class Users {
     public LinkedList<User> allUsers = new LinkedList<User>();
     private LinkedList<User> customers = new LinkedList<User>();
 
+    // An instance of Input class
+    Input input = new Input();
+
     /*
      * Constructor Name : Users()
      * Parameters : none
      * Description : Default constructor
-     */
+    */
     public Users () throws NoSuchAlgorithmException {
         allUsers.add(new User("Admin", "cafe_admin", "admin@persinanights/.com", "admin", Roles.ADMIN, "12-04-2022 07:14:30"));
     }
@@ -40,23 +44,12 @@ public class Users {
      * Description : Method to display all of the customers in the cafe
      */
     public void displayAllCustomers() {
+        // Define a list iterator for customers class
         ListIterator<User> customerListIterator = customers.listIterator();
         while (customerListIterator.hasNext()) {
             User customer = customerListIterator.next();
-            System.out.println("--------------------------");
+            System.out.println("---------------------------");
             System.out.println(customer.toString());
-            System.out.println("--------------------------");
         }
     }
 }
-
-
-
-// TASKS -->
-// CHANGE COMMENTS
-// CREATE A TABLE FORMAT FOR CUSTOMER DETAILS
-// IMPLEMENT LOGIN
-// IMPLEMENT REGISTER
-// PERFORM THE INHERITANCE OPERATION IN LOGIN AND REGISTER
-// CHECK THE FILE I/O OPERATION TO STORE USERS' DETAILS AFTER REGISTRATION PROCESS
-// CHECK THE FILE I/O OPERATION TO READ USERS' DETAILS FOR LOGIN PROCESS
