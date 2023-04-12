@@ -1,6 +1,8 @@
 package classes.Auth;
 
-public class Register {
+import classes.Menu;
+
+public class Register extends Menu {
     // Attributes
     private boolean isFullNameValidated, isUsernameValidated, isEmailValidated, isPasswordValidated = false;
     
@@ -10,7 +12,7 @@ public class Register {
      * Description : Default constrcutor
     */
     public Register () {
-        System.out.println("----------- Create New Account ------------");
+        super("Create New Account");
     }
 
     /*

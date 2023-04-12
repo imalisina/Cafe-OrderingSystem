@@ -7,12 +7,15 @@ import java.time.format.DateTimeFormatter;
 import classes.Encryptor;
 import classes.Enums.Roles;
 
-public class User extends Encryptor {
+public class User {
     // Attributes
     private String fullName, username, email, password;
     private Roles userRole = Roles.CUSTOMER;
     private LocalDateTime timestamps;
     private String formattedTimestamps;
+
+    // An instance of Encryptor class
+    Encryptor encryptor = new Encryptor();
 
     /*
      * Constructor Name : User()
@@ -24,7 +27,7 @@ public class User extends Encryptor {
         this.fullName = fullName;
         this.username = username;
         this.email = email;
-        this.password = super.encryptionHandler(password);
+        this.password = encryptor.encryptionHandler(password);
         timestamps = LocalDateTime.now();
         
         // Store the formatted timestamps 
@@ -41,7 +44,7 @@ public class User extends Encryptor {
         this.fullName = fullName;
         this.username = username;
         this.email = email;
-        this.password = super.encryptionHandler(password);
+        this.password = encryptor.encryptionHandler(password);
         this.userRole = userRole;
         this.formattedTimestamps = formattedTimeStamps;
     }
@@ -95,10 +98,65 @@ public class User extends Encryptor {
      * Method Name : formatTimestamps()
      * Parameters : none
      * Description : method to format the generated timestamps
-     */
+    */
     private void formatTimestamps() {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         formattedTimestamps = timestamps.format(format);
+    }
+
+    /*
+     * Method Name : updateFullName()
+     * Parameters : newFullName
+     * Description : setter/mutator
+    */
+    protected void updateFullName(String newFullName) {
+        fullName = newFullName;
+        // Store the formatted timestamps 
+        updateTimestamps();
+    }
+
+    /*
+     * Method Name : updateUsername()
+     * Parameters : newUsername
+     * Description : setter/mutator
+    */
+    protected void updateUsername(String newUsername) {
+        username = newUsername;
+        // Store the formatted timestamps 
+        updateTimestamps();
+    }
+
+    /*
+     * Method Name : updateEmail()
+     * Parameters : newEmail
+     * Description : setter/mutator
+    */
+    protected void updateEmail (String newEmail) {
+        email = newEmail;
+        // Store the formatted timestamps 
+        updateTimestamps();
+    }
+
+    /*
+     * Method Name : resetPassword()
+     * Parameters : newPassword
+     * Description : setter/mutator
+    */
+    protected void resetPassword (String newPassword) throws NoSuchAlgorithmException {
+        this.password = encryptor.encryptionHandler(newPassword);
+        // Store the formatted timestamps 
+        updateTimestamps();
+    }
+
+    /*
+     * Method Name : updateTimestamps()
+     * Parameters : none
+     * Description : Method to update the timestamps automatically for every changes in the profile
+    */
+    private void updateTimestamps() {
+        timestamps = LocalDateTime.now();
+        // Store the formatted timestamps 
+        formatTimestamps();
     }
 
     /*
