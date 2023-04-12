@@ -1,17 +1,19 @@
 package classes.Auth;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 import classes.Encryptor;
+import classes.FileHandler;
+import classes.Menu;
 
-public class Login extends Encryptor {
+public class Login extends Menu {
     // Attributes
     private boolean isUsernameValidated, isPasswordValidated = false;
     // Store extracted username and password 
     private String extractedUsername, extractedPassword = "";
+
+    // An instance of FileHanlder object
+    FileHandler fileReader = new FileHandler();
 
     /*
      * Constructor Name : Login()
@@ -19,7 +21,7 @@ public class Login extends Encryptor {
      * Description : Default constrcutor
     */
     public Login () {
-        System.out.println("----------- Login ------------");
+        super("Login");
     }
 
     /*
@@ -33,7 +35,8 @@ public class Login extends Encryptor {
 
         // Invoke methods to validate the login details of the user
         validateUsername(enteredUsername);
-        validatePassowrd(super.encryptionHandler(enteredPassword));
+        Encryptor encryptor = new Encryptor();
+        validatePassowrd(encryptor.encryptionHandler(enteredPassword));
 
         // Condition to check whether fields are verified or not
         if (isUsernameValidated && isPasswordValidated) {
@@ -51,22 +54,8 @@ public class Login extends Encryptor {
      * Description : Method to check the existance of entered username and password in login operation
     */
     public void checkUserSession() {
-        // Implement a try catch to handle errors during the "File Reading" process
-        try {
-            // Create buffer reader to perform file reading
-            // Specify the file with relative path
-            BufferedReader usernameReader = new BufferedReader(new FileReader("UsernameData.txt"));
-            BufferedReader passwordReader = new BufferedReader(new FileReader("PasswordData.txt"));
-            // Extract user's username and password
-            // Then, close the buffer to store the extracted data
-            extractedUsername = usernameReader.readLine();
-            usernameReader.close();
-            extractedPassword = passwordReader.readLine();
-            passwordReader.close();
-        } catch (IOException e) {
-            // throw an I/O exception - if any
-            e.printStackTrace();
-        }
+        extractedUsername = fileReader.readFromFile("UsernameData");
+        extractedPassword = fileReader.readFromFile("PasswordData");
     }
 
     /*

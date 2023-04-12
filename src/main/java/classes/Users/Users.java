@@ -1,19 +1,20 @@
 package classes.Users;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
+import classes.FileHandler;
 import classes.Input;
+import classes.Menu;
 import classes.Auth.Login;
 import classes.Auth.Register;
 import classes.Enums.Roles;
 
-public class Users {
+public class Users extends FileHandler {
     // Attributes
+    // An boolen to store new user's authorization status
+    boolean isAuthorized = false;
     // LinkedList data for all the Users
     public LinkedList<User> allUsers = new LinkedList<User>();
     private LinkedList<User> customers = new LinkedList<User>(); 
@@ -74,6 +75,9 @@ public class Users {
         // Create new user based on the validated details
         allUsers.add(new User(enteredFullName, enteredUsername, enteredEmail, enteredPassword));
 
+        // Change user's authorization status
+        isAuthorized = true;
+
         // Create a session for the user
         createUserSession(allUsers.getLast().getUsername(), allUsers.getLast().getEncryptedPassword());
     }
@@ -106,6 +110,9 @@ public class Users {
             // Terminate from the program
             System.exit(1);
         }
+
+        // Change user's authorization status
+        isAuthorized = true;
     }
 
     /*
@@ -114,23 +121,101 @@ public class Users {
      * Description : Method to create a session for user that will be used in further Login requests
     */
     public void createUserSession(String validatedUsername, String validatedPassword) {
-        // Implement a try catch to handle errors during the "File Writing" process
-        try {
-            // Create buffer writer to perform file writing
-            // Specify the file with relative path
-            BufferedWriter usernameWriter = new BufferedWriter(new FileWriter("UsernameData.txt"));
-            BufferedWriter passwordWriter = new BufferedWriter(new FileWriter("PasswordData.txt"));
-            // Store user's username and password
-            // Then, close the buffer to store the written data
-            usernameWriter.write(validatedUsername);
-            usernameWriter.close();
-            passwordWriter.write(validatedPassword);
-            passwordWriter.close();
-            System.out.println("[INFO] Session has been added.");
-        } catch (IOException e) {
-            // throw an I/O exception - if any
-            e.printStackTrace();
+        super.writeOnFile(validatedUsername, validatedPassword);
+    }
+
+    /*
+     * Method Name : editProfileHandler()
+     * Parameters : none
+     * Description : Method to activate edit profile handler
+    */
+    public void editProfileHandler() throws NoSuchAlgorithmException {
+        // Define temporary variable to store user's choice
+        int choiceId = 0;
+        // Define all available menu options
+        String[] settingOptions = {"Change Full name" , "Change Username" , "Change Email" , "Reset Password" , "Delete Account"};
+
+        // An instance of Menu object
+        Menu settingMenu = new Menu("Settings");
+        
+        // Define a temporary boolean variable to check whether user wants to change other details
+        boolean editAgain = true;
+        do {
+        // Display a list of available options to the user for edit profile
+        settingMenu.showMenu(settingOptions);
+
+        // Asking question for edit profile process
+        System.out.print("Enter the ID of the data you want to update: ");
+        choiceId = Input.nextInt();
+
+            // Invoke the profile detail field extractor
+            profileDetailExtractor(choiceId);
+
+            // Ask whether user wants to edit other fields or not
+            System.out.println("Do you want to update other fields ? [y/n]: ");
+            String response = Input.nextLine();
+            // Check the response
+            if (response.equalsIgnoreCase("y")) {
+                editAgain = true;
+            } else if (response.equalsIgnoreCase("n")) {
+                editAgain = false;
+            }
+        } while (editAgain);
+    }
+
+    /*
+     * Method Name : profileDetailExtractor()
+     * Parameters : none
+     * Description : Method to extract selected profile detail
+     */
+    public void profileDetailExtractor(int profileDetailID) throws NoSuchAlgorithmException {
+        // Define a temporary string variable to store new entered value
+        String temp = "";
+        // Switch case to find the correct profile detail field
+        switch (profileDetailID) {
+            case 1:
+                temp = inputOutputHandler("Enter a new full name: ");
+                allUsers.get(1).updateFullName(temp);
+                break;
+            case 2: 
+                temp = inputOutputHandler("Enter a new username: ");
+                allUsers.get(1).updateUsername(temp);
+                super.writeOnFile(allUsers.get(1).getUsername());
+                break;
+            case 3:
+                temp = inputOutputHandler("Enter a new email address: ");
+                allUsers.get(1).updateEmail(temp);
+                break;
+            case 4: 
+                // Check whether user is authorized or not
+                if (isAuthorized) {
+                    temp = inputOutputHandler("Enter a new secure password: ");
+                    allUsers.get(1).resetPassword(temp);
+                    super.writeOnFile(allUsers.get(1).getEncryptedPassword());
+                } else {
+                    System.out.println("[ERROR] you are not authorized !");
+                    System.exit(1);
+                }
+                break;
+            case 5: 
+                allUsers.remove(1);
+                System.out.println("[INFO] Account has been removed form system.");
+                // Terminate the program
+                System.exit(0);
         }
+    }
+
+     /*
+     * Method Name : inputOutputHandler()
+     * Parameters : question
+     * Description : Method to handle the input/output process for settings
+     */
+    public String inputOutputHandler (String question) {
+        // Display the sent message
+        System.out.print(question);
+        // Store in a temp file
+        String answer = Input.nextLine();
+        return answer;
     }
 
     /*
