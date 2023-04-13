@@ -7,6 +7,7 @@ public class Menu {
      * Description : Alternate Constructor
     */
     public Menu(String menuTitle) {
+        System.out.println("");
         System.out.println("----------- "+ menuTitle +" ------------");
     }
 
@@ -24,4 +25,5 @@ public class Menu {
             loopCounter++;
         }
     }
+
 }
