@@ -4,11 +4,12 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
+import classes.Items;
 import classes.Enums.Category;
 import classes.System.Menu;
 
 
-public class Foods
+public class Foods extends Items
 {
     // attributes
     // Hashmap data for all ingredients for each food item
@@ -19,15 +20,20 @@ public class Foods
     private LinkedList<Food> allLunches = new LinkedList<Food>();
     private LinkedList<Food> allFastFoods = new LinkedList<Food>();
 
+    public Foods()
+    {
+        itemSeeder();
+    }
+
     /*
      * Constructor Name : Foods()
      * Parameters : none
-     * Description : Default constructor
+     * Description : Alternate constructor
      */
     public Foods(String name) 
     {
         new Menu(name);
-        foodSeeder();
+        itemSeeder();
     }
     
     /*
@@ -36,7 +42,8 @@ public class Foods
      * Description : - create all food objects
      *               - create hashMap ingredients for each object
      */
-    private void foodSeeder()
+    @Override
+    public void itemSeeder()
     {
         // Create all Food Items
         allFoods.add(new Food("Milk Rice", 2.99, 4, Category.BREAKFAST));
@@ -188,8 +195,7 @@ public class Foods
         // initialize counter
         int i = 0;
         // iterate over each meal in the list
-        while (fastfoodListIterator.hasNext()) 
-        {
+        while (fastfoodListIterator.hasNext()) {
             // Get the next fast food meal in the list
             Food fastfood = fastfoodListIterator.next();
             // Display details of the meal
@@ -202,5 +208,21 @@ public class Foods
             i++;
         }
     }
+    
+    public Food findBreakfast(int id)
+    {
+        return allBreakfasts.get(id - 1);
+    }
+
+    public Food findLunch(int id)
+    {
+        return allLunches.get(id - 1);
+    }
+
+    public Food findFastFood(int id)
+    {
+        return allFastFoods.get(id - 1);
+    }
+
     
 }
