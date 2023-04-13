@@ -14,7 +14,7 @@ import classes.System.Menu;
 public class Order {
     // attributes
     String title;
-    double price;
+    double totalPrice;
     String pairing;
     //Promotion discount;
 
@@ -225,7 +225,7 @@ public class Order {
     public void displayOrderSummary() 
     {
         // initialise 'total' variable
-        double total = 0;
+        totalPrice = 0;
         System.out.println("\n----------- ORDER SUMMARY -----------\n");
         // If the user ordered fro the Food Category, display each Item
         if (foodOrder.size() != 0) {
@@ -233,7 +233,7 @@ public class Order {
             for (Food food : foodOrder) {
                 System.out.println(food.toString());
                 // Calculate new total
-                total += food.price;
+                totalPrice += food.price;
             }
         }
         if (drinkOrder.size() != 0) {
@@ -241,7 +241,7 @@ public class Order {
             for (Drink drink : drinkOrder) {
                 System.out.println(drink.toString());
                 // Calculate new total
-                total += drink.price;
+                totalPrice += drink.price;
             }
         }
         if (snackOrder.size() != 0) {
@@ -249,11 +249,11 @@ public class Order {
             for (Snack snack : snackOrder) {
                 System.out.println(snack.toString());
                 // Calculate new total
-                total += snack.price;
+                totalPrice += snack.price;
             }
         }
         // Display total cost of order
-        System.out.println("\nTOTAL : $ " + total);
+        System.out.println("\nTOTAL : $ " + totalPrice);
 
     }
 
