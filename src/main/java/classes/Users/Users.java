@@ -11,7 +11,7 @@ import classes.Auth.Login;
 import classes.Auth.Register;
 import classes.Enums.Roles;
 
-public class Users extends FileHandler {
+public class Users {
     // Attributes
     // An boolen to store new user's authorization status
     boolean isAuthorized = false;
@@ -24,6 +24,9 @@ public class Users extends FileHandler {
 
     // An instance of Login class
     Login loginToAccount;
+
+    // An instance of FileHandler class
+    FileHandler fileHanlder = new FileHandler();
 
     // An instance of Input class
     Input input = new Input();
@@ -121,7 +124,7 @@ public class Users extends FileHandler {
      * Description : Method to create a session for user that will be used in further Login requests
     */
     public void createUserSession(String validatedUsername, String validatedPassword) {
-        super.writeOnFile(validatedUsername, validatedPassword);
+        fileHanlder.writeOnFile(validatedUsername, validatedPassword);
     }
 
     /*
@@ -180,7 +183,7 @@ public class Users extends FileHandler {
             case 2: 
                 temp = inputOutputHandler("Enter a new username: ");
                 allUsers.get(1).updateUsername(temp);
-                super.writeOnFile(allUsers.get(1).getUsername());
+                fileHanlder.writeOnFile(allUsers.get(1).getUsername());
                 break;
             case 3:
                 temp = inputOutputHandler("Enter a new email address: ");
@@ -191,7 +194,7 @@ public class Users extends FileHandler {
                 if (isAuthorized) {
                     temp = inputOutputHandler("Enter a new secure password: ");
                     allUsers.get(1).resetPassword(temp);
-                    super.writeOnFile(allUsers.get(1).getEncryptedPassword());
+                    fileHanlder.writeOnFile(allUsers.get(1).getEncryptedPassword());
                 } else {
                     System.out.println("[ERROR] you are not authorized !");
                     System.exit(1);
