@@ -4,8 +4,8 @@ import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import classes.Encryptor;
 import classes.Enums.Roles;
+import classes.System.Encryptor;
 
 public class User {
     // Attributes

@@ -1,4 +1,4 @@
-package classes;
+package classes.System;
 
 // import the Scanner class from the java.util package
 import java.util.*;

@@ -4,12 +4,12 @@ import java.security.NoSuchAlgorithmException;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-import classes.FileHandler;
-import classes.Input;
-import classes.Menu;
 import classes.Auth.Login;
 import classes.Auth.Register;
 import classes.Enums.Roles;
+import classes.System.FileHandler;
+import classes.System.Input;
+import classes.System.Menu;
 
 public class Users {
     // Attributes

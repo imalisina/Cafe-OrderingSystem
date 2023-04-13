@@ -1,6 +1,6 @@
 package classes.Auth;
 
-import classes.Menu;
+import classes.System.Menu;
 
 public class Register {
     // Attributes
