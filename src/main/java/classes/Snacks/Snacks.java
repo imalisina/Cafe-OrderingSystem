@@ -2,8 +2,8 @@ package classes.Snacks;
 
 import java.util.LinkedList;
 
-import classes.Menu;
 import classes.Enums.Category;
+import classes.System.Menu;
 
 public class Snacks 
 {
