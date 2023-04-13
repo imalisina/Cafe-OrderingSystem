@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-import classes.Menu;
 import classes.Enums.Category;
+import classes.System.Menu;
 
 
 public class Foods

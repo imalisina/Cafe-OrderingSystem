@@ -2,9 +2,9 @@ package classes.Auth;
 
 import java.security.NoSuchAlgorithmException;
 
-import classes.Encryptor;
-import classes.FileHandler;
-import classes.Menu;
+import classes.System.Encryptor;
+import classes.System.FileHandler;
+import classes.System.Menu;
 
 public class Login {
     // Attributes
