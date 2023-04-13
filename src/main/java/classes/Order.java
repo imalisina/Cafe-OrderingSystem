@@ -18,9 +18,12 @@ public class Order {
     String pairing;
     //Promotion discount;
 
+    // Linked list to store collection of items per Order
     LinkedList<Food> foodOrder = new LinkedList<Food>();
     LinkedList<Drink> drinkOrder = new LinkedList<Drink>();
     LinkedList<Snack> snackOrder = new LinkedList<Snack>();
+
+    // An instance of Finder class
     Finder finder = new Finder();
 
     /*
