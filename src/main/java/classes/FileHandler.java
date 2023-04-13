@@ -19,7 +19,7 @@ public class FileHandler {
      * Parameters : username, password 
      * Description : Method to store username and password in the specified files
     */
-    protected void writeOnFile (String username, String password) {
+    public void writeOnFile (String username, String password) {
         // Implement a try catch to handle errors during the "File Writing" process
         try {
             // Create buffer writer to perform file writing
@@ -44,7 +44,7 @@ public class FileHandler {
      * Parameters : updatedData 
      * Description : Method to store single updated data in the specified files
     */
-    protected void writeOnFile (String updatedData) {
+    public void writeOnFile (String updatedData) {
         // Define a temporary string variable to specify the file name
         String filename = fileNameFinder(updatedData);
         // Implement a try catch to handle errors during the "File Writing" process

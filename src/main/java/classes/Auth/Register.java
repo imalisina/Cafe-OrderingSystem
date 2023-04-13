@@ -2,17 +2,17 @@ package classes.Auth;
 
 import classes.Menu;
 
-public class Register extends Menu {
+public class Register {
     // Attributes
     private boolean isFullNameValidated, isUsernameValidated, isEmailValidated, isPasswordValidated = false;
-    
+
     /*
      * Constructor Name : Register()
      * Parameters : none
      * Description : Default constrcutor
     */
     public Register () {
-        super("Create New Account");
+        new Menu("Create New Account");
     }
 
     /*
