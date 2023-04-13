@@ -3,10 +3,12 @@ package classes.Foods;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.ListIterator;
+
+import classes.Menu;
 import classes.Enums.Category;
 
 
-public class Foods 
+public class Foods
 {
     // attributes
     // Hashmap data for all ingredients for each food item
@@ -22,8 +24,9 @@ public class Foods
      * Parameters : none
      * Description : Default constructor
      */
-    public Foods() 
+    public Foods(String name) 
     {
+        new Menu(name);
         foodSeeder();
     }
     
@@ -126,8 +129,6 @@ public class Foods
      */
     public void displayBreakfastMenu() 
     {
-        System.out.println("Breakfast Menu:\n");
-
         // Iterator for the allBreakfasts List
         ListIterator<Food> breakfastListIterator = allBreakfasts.listIterator();
         // initialize counter 
@@ -138,7 +139,11 @@ public class Foods
             // Get the next breakfast meal in the list
             Food breakfast = breakfastListIterator.next();
             // Display details of the meal
-            System.out.println("[" + (i + 1) + "] " + breakfast.toString() + "\n");
+            System.out.println("[" + (i + 1) + "] " + breakfast.toString());
+            // Control the space in terminal
+            if (i < allBreakfasts.size() - 1) {
+                System.out.println("");
+            }
             // increment counter
             i++;
         }
@@ -151,8 +156,6 @@ public class Foods
      */
     public void displayLunchMenu() 
     {
-        System.out.println("Lunch Menu:\n");
-
         // Iterator for the allLunches List
         ListIterator<Food> lunchListIterator = allLunches.listIterator();
         // initialize counter 
@@ -163,7 +166,11 @@ public class Foods
             // Get the next lunch meal in the list
             Food lunch = lunchListIterator.next();
             // Display details of the meal
-            System.out.println("[" + (i + 1) + "] " + lunch.toString() + "\n");
+            System.out.println("[" + (i + 1) + "] " + lunch.toString());
+            // Control the space in terminal
+            if (i < allLunches.size() - 1) {
+                System.out.println("");
+            }
             // increment counter
             i++;
         }
@@ -176,8 +183,6 @@ public class Foods
      */
     public void displayFastFoodMenu() 
     {
-        System.out.println("Fastfood Menu:\n");
-
         // Iterator for the allFastFoods List
         ListIterator<Food> fastfoodListIterator = allFastFoods.listIterator();
         // initialize counter
@@ -188,7 +193,11 @@ public class Foods
             // Get the next fast food meal in the list
             Food fastfood = fastfoodListIterator.next();
             // Display details of the meal
-            System.out.println("[" + (i + 1) + "] " + fastfood.toString() + "\n");
+            System.out.println("[" + (i + 1) + "] " + fastfood.toString());
+            // Control the space in terminal
+            if (i < allFastFoods.size() - 1) {
+                System.out.println("");
+            }
             // increment counter
             i++;
         }
