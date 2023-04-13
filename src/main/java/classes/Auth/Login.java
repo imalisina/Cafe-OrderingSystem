@@ -6,7 +6,7 @@ import classes.Encryptor;
 import classes.FileHandler;
 import classes.Menu;
 
-public class Login extends Menu {
+public class Login {
     // Attributes
     private boolean isUsernameValidated, isPasswordValidated = false;
     // Store extracted username and password 
@@ -21,7 +21,7 @@ public class Login extends Menu {
      * Description : Default constrcutor
     */
     public Login () {
-        super("Login");
+        new Menu("Login");
     }
 
     /*

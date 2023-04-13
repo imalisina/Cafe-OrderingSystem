@@ -1,9 +1,10 @@
 package classes;
 
 public class Menu {
+
     /*
      * Constructor Name : Menu()
-     * Parameters : String menuTitle
+     * Parameters : menuTitle
      * Description : Alternate Constructor
     */
     public Menu(String menuTitle) {
