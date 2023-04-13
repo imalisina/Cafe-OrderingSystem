@@ -1,6 +1,8 @@
 package classes.Snacks;
 
 import java.util.LinkedList;
+
+import classes.Menu;
 import classes.Enums.Category;
 
 public class Snacks 
@@ -14,8 +16,9 @@ public class Snacks
      * Parameters : none
      * Description : Default constructor
      */
-    public Snacks() 
+    public Snacks(String name) 
     {
+        new Menu(name);
         snackSeeder();
     }
     
@@ -42,13 +45,15 @@ public class Snacks
      */
     public void displayAllSnacks()
     {
-        System.out.println("Snacks Menu:\n");
-
         // Iterate over each snack in the list
         for (int i = 0; i < allSnacks.size(); i++)
         {
             // Display snack details
-            System.out.println("[" + (i + 1) + "] " + allSnacks.get(i).toString() + "\n");
+            System.out.println("[" + (i + 1) + "] " + allSnacks.get(i).toString());
+            // Control the space in terminal
+            if (i < allSnacks.size() - 1) {
+                System.out.println("");
+            }
         }
     }    
 }

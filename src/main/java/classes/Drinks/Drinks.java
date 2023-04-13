@@ -1,11 +1,12 @@
 package classes.Drinks;
 
+import classes.Menu;
 import classes.Enums.Category;
 
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-public class Drinks 
+public class Drinks
 {
     // attributes
     // LinkedList data for all the Drink items
@@ -18,8 +19,9 @@ public class Drinks
      * Parameters : none
      * Description : Default constructor
      */
-    public Drinks() 
+    public Drinks(String name) 
     {
+        new Menu(name);
         drinkSeeder();
     }
     
@@ -88,8 +90,6 @@ public class Drinks
     */
     public void displayHotDrinks() 
     {
-        System.out.println("Hot Drinks Menu:\n");
-
         // Iterator for the hotDrinks List
         ListIterator<Drink> hotDrinkListIterator = hotDrinks.listIterator();
         // initialize counter 
@@ -100,7 +100,11 @@ public class Drinks
             // Get the next hot drink in the list
             Drink hotDrink = hotDrinkListIterator.next();
             // Display details of the drink
-            System.out.println("[" + (i + 1) + "] " + hotDrink.toString() + "\n");
+            System.out.println("[" + (i + 1) + "] " + hotDrink.toString());
+            // Control the space in terminal
+            if (i < hotDrinks.size() - 1) {
+                System.out.println("");
+            }
             // increment counter
             i++;
         }
@@ -113,8 +117,6 @@ public class Drinks
      */
     public void displayColdDrinks() 
     {
-        System.out.println("Cold Drinks Menu:\n");
-
         // Iterator for the hotDrinks List
         ListIterator<Drink> coldDrinkListIterator = coldDrinks.listIterator();
         // initialize counter
@@ -125,7 +127,11 @@ public class Drinks
             // Get the next cold drink in the list
             Drink coldDrink = coldDrinkListIterator.next();
             // Display details of the drink
-            System.out.println("[" + (i + 1) + "] " + coldDrink.toString() + "\n");
+            System.out.println("[" + (i + 1) + "] " + coldDrink.toString());
+            // Control the space in terminal
+            if (i < coldDrinks.size() - 1) {
+                System.out.println("");
+            }
             // increment counter
             i++;
         }
