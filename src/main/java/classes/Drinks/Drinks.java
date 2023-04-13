@@ -7,7 +7,7 @@ import classes.System.Menu;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-public class Drinks extends Items
+public class Drinks implements Items
 {
     // attributes
     // LinkedList data for all the Drink items

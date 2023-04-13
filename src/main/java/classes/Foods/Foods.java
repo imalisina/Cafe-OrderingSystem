@@ -9,7 +9,7 @@ import classes.Enums.Category;
 import classes.System.Menu;
 
 
-public class Foods extends Items
+public class Foods implements Items
 {
     // attributes
     // Hashmap data for all ingredients for each food item

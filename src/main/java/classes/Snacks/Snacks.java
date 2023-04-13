@@ -6,7 +6,7 @@ import classes.Items;
 import classes.Enums.Category;
 import classes.System.Menu;
 
-public class Snacks extends Items
+public class Snacks implements Items
 {
     // attributes
     // LinkedList data for all the Snack items
@@ -86,7 +86,6 @@ public class Snacks extends Items
      * Description : - Overide the getSize() in items 
      *               - return the size of the snack list
      */
-    @Override
     public int getSize() 
     {
         return allSnacks.size();
