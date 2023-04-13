@@ -35,24 +35,40 @@ public class Order {
     //     this.pairing = pairing;
     // }
 
-    public Order()
+    /*
+     * Constructor Name : Order()
+     * Parameters : none
+     * Description : Default Constructor
+     */
+    public Order() 
     {
-        
+
     }
-    
-    public void placeOrder()
+
+    /*
+     * Method Name : placeOrder()
+     * Parameters : none
+     * Description : call the relevant methods to complete the order from start to end 
+     */
+    public void placeOrder() 
     {
         displayMenu();
         displayOrderStyle();
         displayOrderSummary();
     }
 
+    /*
+     * Method Name : displayMenu()
+     * Parameters : none
+     * Description : display the selected categories in the menu 
+     */
     public void displayMenu() 
     {
         // Define temporary variable to store user's choice
         int choiceId = 0;
         // Define all available menu options
-        String[] categoryOptions = { "Breakfast", "Lunch", "Fast Food", "Snack", "Hot Drink", "Cold Drink", "Full Menu" };
+        String[] categoryOptions = { "Breakfast", "Lunch", "Fast Food", "Snack", "Hot Drink", "Cold Drink",
+                "Full Menu" };
 
         // An instance of Menu object
         Menu categoryMenu = new Menu("MENU");
@@ -70,14 +86,12 @@ public class Order {
 
     /*
      * Method Name : displayMealMenu()
-     * Parameters : category
+     * Parameters : categoryId
      * Description : display the menu based on the selected category
      */
-    public void displayMealMenu(int categoryId) 
-    {
+    public void displayMealMenu(int categoryId) {
         // Switch case to find the correct category field
-        switch (categoryId) 
-        {
+        switch (categoryId) {
             case 1:
                 displayBreakfastMenu();
                 break;
@@ -105,7 +119,12 @@ public class Order {
                 displayColdDrinksMenu();
         }
     }
-    
+
+    /*
+     * Method Name : displayOrderStyle()
+     * Parameters : none
+     * Description : display the options to place an order from the menu 
+     */
     public void displayOrderStyle() 
     {
         // Define temporary variable to store user's choice
@@ -126,27 +145,39 @@ public class Order {
         // Invoke the meal menu as per the selection
         displayOrderStyleMenu(choiceId);
     }
-    
+
+    /*
+     * Method Name : displayOrderStyleMenu()
+     * Parameters : styleId
+     * Description : - Allow the user to choose the way they place their order
+     *               - they can either manually do this or autoGenerate their meals
+     */
     public void displayOrderStyleMenu(int styleId) 
     {
-        // Switch case to find the correct category field
+        // Switch case to specify order style
         switch (styleId) {
             case 1:
-                //autoGenerateMeal();
+                //auto-generate the meal;
                 System.out.println("Auto");
                 break;
             case 2:
+                // manually select the meal
                 selectMeal();
                 break;
         }
     }
 
-    public void selectMeal()
-    {
+    /*
+     * Method Name : selectMeal()
+     * Parameters : none
+     * Description : - allow the user to manually choose their meals
+     */
+    public void selectMeal() 
+    { // As the user to select the category
         System.out.println("Select the category to choose your meal from:");
         int choiceId = Input.nextInt();
-        do
-        {
+        do {
+            // Switch case to specify the order 
             switch (choiceId) {
                 case 1:
                     Food breakfast = finder.findBreakfast(askMealId());
@@ -179,84 +210,124 @@ public class Order {
                     drinkOrder.add(cold);
                     break;
             }
+            // Ask the user if they want to add another meal
             System.out.println("\nSelect the category to choose your next meal from:");
             System.out.println("---- NOTE: If that is all you wish to order, ENTER 0 ----");
             choiceId = Input.nextInt();
-        } while(choiceId != 0);
+        } while (choiceId != 0);
     }
-    
-    public void displayOrderSummary()
+
+    /*
+     * Method Name : displayOrderSummary()
+     * Parameters : none
+     * Description : display a summary of the users order and display total
+     */
+    public void displayOrderSummary() 
     {
+        // initialise 'total' variable
         double total = 0;
         System.out.println("\n----------- ORDER SUMMARY -----------\n");
-        if(foodOrder.size() != 0)
-        {
+        // If the user ordered fro the Food Category, display each Item
+        if (foodOrder.size() != 0) {
+            // Loop through the food list
             for (Food food : foodOrder) {
                 System.out.println(food.toString());
+                // Calculate new total
                 total += food.price;
             }
         }
-        if(drinkOrder.size() != 0)
-        {
+        if (drinkOrder.size() != 0) {
+            // Loop through the drink list
             for (Drink drink : drinkOrder) {
                 System.out.println(drink.toString());
+                // Calculate new total
                 total += drink.price;
             }
         }
-        if(snackOrder.size() != 0)
-        {
+        if (snackOrder.size() != 0) {
+            // Loop through the snack list
             for (Snack snack : snackOrder) {
                 System.out.println(snack.toString());
+                // Calculate new total
                 total += snack.price;
             }
         }
+        // Display total cost of order
         System.out.println("\nTOTAL : $ " + total);
-        
+
     }
-    
-    public int askMealId()
-    {
+
+    /*
+     * Method Name : askMealId()
+     * Parameters : none
+     * Description : ask the user to enter the mealId for the item they choose
+     */
+    public int askMealId() {
         System.out.print("\nEnter the meal Id: ");
         int mealId = Input.nextInt();
         return mealId;
     }
 
-    public void displayBreakfastMenu()
-    {
+    /*
+     * Method Name : displayBreakfastMenu()
+     * Parameters : none
+     * Description : display all the brekafast items
+     */
+    public void displayBreakfastMenu() {
         Foods breakfast = new Foods("BREAKFAST MENU");
         breakfast.filterBreakfastMeals();
         breakfast.displayBreakfastMenu();
     }
 
-    public void displayLunchMenu()
-    {
+    /*
+     * Method Name : displayLunchMenu()
+     * Parameters : none
+     * Description : display all the lunch items
+     */
+    public void displayLunchMenu() {
         Foods lunch = new Foods("LUNCH MENU");
         lunch.filterLunchMeals();
         lunch.displayLunchMenu();
     }
 
-    public void displayFastFoodMenu()
-    {
+    /*
+     * Method Name : displayFastFoodMenu()
+     * Parameters : none
+     * Description : display all the fast food items
+     */
+    public void displayFastFoodMenu() {
         Foods fastfood = new Foods("FAST FOOD MENU");
         fastfood.filterFastFoodMeals();
         fastfood.displayFastFoodMenu();
     }
 
-    public void displaySnacksMenu()
-    {
+    /*
+     * Method Name : displaySnacksMenu()
+     * Parameters : none
+     * Description : display all the snack items
+     */
+    public void displaySnacksMenu() {
         Snacks snack = new Snacks("SNACKS MENU");
         snack.displayAllSnacks();
     }
 
-    public void displayHotDrinksMenu()
-    {
+    /*
+     * Method Name : displayHotDrinksMenu()
+     * Parameters : none
+     * Description : display all the hot drink items
+     */
+    public void displayHotDrinksMenu() {
         Drinks hot = new Drinks("HOT DRINKS");
         hot.filterHotDrinks();
         hot.displayHotDrinks();
     }
 
-    public void displayColdDrinksMenu()
-    {
+    /*
+     * Method Name : displayColdDrinksMenu()
+     * Parameters : none
+     * Description : display all the cold drink items
+     */
+    public void displayColdDrinksMenu() {
         Drinks cold = new Drinks("COLD DRINKS");
         cold.filterColdDrinks();
         cold.displayColdDrinks();

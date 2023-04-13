@@ -15,6 +15,11 @@ public class Drinks extends Items
     private LinkedList<Drink> hotDrinks = new LinkedList<Drink>();
     private LinkedList<Drink> coldDrinks = new LinkedList<Drink>();
 
+    /*
+     * Constructor Name : Foods()
+     * Parameters : none
+     * Description : default constructor
+     */
     public Drinks()
     {
         itemSeeder();
@@ -22,8 +27,8 @@ public class Drinks extends Items
 
     /*
      * Constructor Name : Drinks()
-     * Parameters : none
-     * Description : Default constructor
+     * Parameters : name
+     * Description : Alternate constructor
      */
     public Drinks(String name) 
     {
@@ -34,7 +39,7 @@ public class Drinks extends Items
     /*
      * Method Name : drinkSeeder()
      * Parameters : none
-     * Description : - create all drink objects
+     * Description : create all drink objects
      */
     @Override
     public void itemSeeder()
@@ -143,11 +148,21 @@ public class Drinks extends Items
         }
     }
     
+    /*
+     * Method Name : findHotDrink()
+     * Parameters : id
+     * Description : return the hot drink at the given index
+     */
     public Drink findHotDrink(int id)
     {
         return hotDrinks.get(id - 1);
     }
     
+    /*
+     * Method Name : findColdDrink()
+     * Parameters : id
+     * Description : return the cold drink at the given index
+     */
     public Drink findColdDrink(int id)
     {
         return coldDrinks.get(id - 1);

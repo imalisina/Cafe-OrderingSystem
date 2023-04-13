@@ -20,6 +20,11 @@ public class Foods extends Items
     private LinkedList<Food> allLunches = new LinkedList<Food>();
     private LinkedList<Food> allFastFoods = new LinkedList<Food>();
 
+    /*
+     * Constructor Name : Foods()
+     * Parameters : none
+     * Description : default constructor
+     */
     public Foods()
     {
         itemSeeder();
@@ -27,7 +32,7 @@ public class Foods extends Items
 
     /*
      * Constructor Name : Foods()
-     * Parameters : none
+     * Parameters : name
      * Description : Alternate constructor
      */
     public Foods(String name) 
@@ -209,16 +214,31 @@ public class Foods extends Items
         }
     }
     
+    /*
+     * Method Name : findBreakfast()
+     * Parameters : id
+     * Description : return the brekafast meal at the given index
+     */
     public Food findBreakfast(int id)
     {
         return allBreakfasts.get(id - 1);
     }
 
+    /*
+     * Method Name : findLunch()
+     * Parameters : id
+     * Description : return the lunch meal at the given index
+     */
     public Food findLunch(int id)
     {
         return allLunches.get(id - 1);
     }
 
+    /*
+     * Method Name : findFastFood()
+     * Parameters : id
+     * Description : return the fast food meal at the given index
+     */
     public Food findFastFood(int id)
     {
         return allFastFoods.get(id - 1);

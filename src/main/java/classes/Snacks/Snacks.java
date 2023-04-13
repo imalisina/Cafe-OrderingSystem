@@ -12,6 +12,11 @@ public class Snacks extends Items
     // LinkedList data for all the Snack items
     private LinkedList<Snack> allSnacks = new LinkedList<Snack>();
 
+    /*
+     * Constructor Name : Snacks()
+     * Parameters : none
+     * Description : Default constructor
+     */
     public Snacks()
     {
         itemSeeder();
@@ -19,8 +24,8 @@ public class Snacks extends Items
 
     /*
      * Constructor Name : Snacks()
-     * Parameters : none
-     * Description : Default constructor
+     * Parameters : name
+     * Description : Alternate constructor
      */
     public Snacks(String name) 
     {
@@ -53,18 +58,37 @@ public class Snacks extends Items
     public void displayAllSnacks()
     {
         // Iterate over each snack in the list
-        for (int i = 0; i < allSnacks.size(); i++) {
+        for (int i = 0; i < getSize(); i++) 
+        {
             // Display snack details
             System.out.println("[" + (i + 1) + "] " + allSnacks.get(i).toString());
             // Control the space in terminal
-            if (i < allSnacks.size() - 1) {
+            if (i < getSize() - 1) 
+            {
                 System.out.println("");
             }
         }
     }
     
+    /*
+     * Method Name : findSnack()
+     * Parameters : id
+     * Description : return the snack at the given index
+     */
     public Snack findSnack(int id)
     {
         return allSnacks.get(id - 1);
+    }
+
+    /*
+     * Method Name : getSize()
+     * Parameters : none
+     * Description : - Overide the getSize() in items 
+     *               - return the size of the snack list
+     */
+    @Override
+    public int getSize() 
+    {
+        return allSnacks.size();
     }
 }
