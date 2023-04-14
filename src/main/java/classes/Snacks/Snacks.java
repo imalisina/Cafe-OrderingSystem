@@ -2,10 +2,11 @@ package classes.Snacks;
 
 import java.util.LinkedList;
 
+import classes.Items;
 import classes.Enums.Category;
 import classes.System.Menu;
 
-public class Snacks 
+public class Snacks implements Items
 {
     // attributes
     // LinkedList data for all the Snack items
@@ -16,10 +17,20 @@ public class Snacks
      * Parameters : none
      * Description : Default constructor
      */
+    public Snacks()
+    {
+        itemSeeder();
+    }
+
+    /*
+     * Constructor Name : Snacks()
+     * Parameters : name
+     * Description : Alternate constructor
+     */
     public Snacks(String name) 
     {
         new Menu(name);
-        snackSeeder();
+        itemSeeder();
     }
     
     /*
@@ -27,7 +38,8 @@ public class Snacks
      * Parameters : none
      * Description : - create all snack objects
      */
-    private void snackSeeder()
+    @Override
+    public void itemSeeder()
     {
         // Create snack objects
         allSnacks.add(new Snack("Falafel", 6.99, Category.SNACK, 4, "Small", 4));
@@ -46,14 +58,36 @@ public class Snacks
     public void displayAllSnacks()
     {
         // Iterate over each snack in the list
-        for (int i = 0; i < allSnacks.size(); i++)
+        for (int i = 0; i < getSize(); i++) 
         {
             // Display snack details
             System.out.println("[" + (i + 1) + "] " + allSnacks.get(i).toString());
             // Control the space in terminal
-            if (i < allSnacks.size() - 1) {
+            if (i < getSize() - 1) 
+            {
                 System.out.println("");
             }
         }
-    }    
+    }
+    
+    /*
+     * Method Name : findSnack()
+     * Parameters : id
+     * Description : return the snack at the given index
+     */
+    public Snack findSnack(int id)
+    {
+        return allSnacks.get(id - 1);
+    }
+
+    /*
+     * Method Name : getSize()
+     * Parameters : none
+     * Description : - Overide the getSize() in items 
+     *               - return the size of the snack list
+     */
+    public int getSize() 
+    {
+        return allSnacks.size();
+    }
 }
