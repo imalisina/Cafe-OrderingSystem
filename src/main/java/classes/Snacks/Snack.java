@@ -93,6 +93,6 @@ public class Snack extends Item
     @Override
     public String toString() 
     {
-        return "Name: " + name + ", Price: " + price + "\nDetails - Rating: " + rating + ", Category: " + category + "\nSize: " + size + ", Quantity: " + quantity;
+        return "Name: " + name + ", Price: $" + price + "\nDetails - Rating: " + rating + ", Category: " + category + "\nSize: " + size + ", Quantity: " + quantity;
     }
 }

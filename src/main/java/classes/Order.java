@@ -18,6 +18,17 @@ public class Order {
     String pairing;
     //Promotion discount;
 
+    // global variable to store user choice
+    int categoryChoiceId = 0;
+
+    // constants
+    final int BREAKFAST_MENU = 3;
+    final int LUNCH_MENU = 5;
+    final int FASTFOOD_MENU = 3;
+    final int SNACK_MENU = 6;
+    final int HOT_DRINK_MENU = 5;
+    final int COLD_DRINK_MENU = 5;
+
     // Linked list to store collection of items per Order
     LinkedList<Food> foodOrder = new LinkedList<Food>();
     LinkedList<Drink> drinkOrder = new LinkedList<Drink>();
@@ -67,11 +78,24 @@ public class Order {
      */
     public void displayMenu() 
     {
-        // Define temporary variable to store user's choice
-        int choiceId = 0;
+        // Loop through the code to allow the user to view different categories
+        do {
+            // display the Menu categories
+            displayCategoryMenu("Select a category to view from the Menu\n(ENTER 0 to Proceed to place your Order)");
+            // Invoke the meal menu as per the selection
+            displayMealMenu(categoryChoiceId);
+        } while (categoryChoiceId != 0);
+    }
+
+    /*
+     * Method Name : displayMealMenu()
+     * Parameters : prompt
+     * Description : display the different categories in the menu
+     */
+    public void displayCategoryMenu(String prompt)
+    {
         // Define all available menu options
-        String[] categoryOptions = { "Breakfast", "Lunch", "Fast Food", "Snack", "Hot Drink", "Cold Drink",
-                "Full Menu" };
+        String[] categoryOptions = { "Breakfast", "Lunch", "Fast Food", "Snack", "Hot Drink", "Cold Drink"};
 
         // An instance of Menu object
         Menu categoryMenu = new Menu("MENU");
@@ -79,12 +103,15 @@ public class Order {
         // Display a list of available categories
         categoryMenu.showMenu(categoryOptions);
 
-        // Asking question to enter the category
-        System.out.print("\nEnter the category you would like to view: ");
-        choiceId = Input.nextInt();
-
-        // Invoke the meal menu as per the selection
-        displayMealMenu(choiceId);
+        // display the prompt and ask user for input
+        System.out.print("\n" + prompt + ": ");
+        categoryChoiceId = Input.nextInt();
+        // Make sure the user enters a valid input
+        while (categoryChoiceId < 0 || categoryChoiceId > 6)
+        {
+            System.out.print("\nPlease select a value between 1 and 6: ");
+            categoryChoiceId = Input.nextInt();
+        }
     }
 
     /*
@@ -113,13 +140,6 @@ public class Order {
             case 6:
                 displayColdDrinksMenu();
                 break;
-            case 7:
-                displayBreakfastMenu();
-                displayLunchMenu();
-                displayFastFoodMenu();
-                displaySnacksMenu();
-                displayHotDrinksMenu();
-                displayColdDrinksMenu();
         }
     }
 
@@ -130,23 +150,22 @@ public class Order {
      */
     public void displayOrderStyle() 
     {
-        // Define temporary variable to store user's choice
-        int choiceId = 0;
+        categoryChoiceId = 0;
         // Define all available menu options
         String[] options = { "Auto-Generate Meal", "Select Meal" };
 
         // An instance of Menu object
         Menu orderStyleMenu = new Menu("ORDER STYLE");
 
-        // Display a list of available categories
+        // Display a list of available options
         orderStyleMenu.showMenu(options);
 
-        // Asking question to enter the category
-        System.out.print("\nEnter the order style: ");
-        choiceId = Input.nextInt();
+        // Ask user how they want to select their meal
+        System.out.print("\nHow would you like to place your order: ");
+        categoryChoiceId = Input.nextInt();
 
         // Invoke the meal menu as per the selection
-        displayOrderStyleMenu(choiceId);
+        displayOrderStyleMenu(categoryChoiceId);
     }
 
     /*
@@ -161,7 +180,7 @@ public class Order {
         switch (styleId) {
             case 1:
                 //auto-generate the meal;
-                System.out.println("Auto");
+                autoGenerateMeal();
                 break;
             case 2:
                 // manually select the meal
@@ -173,51 +192,105 @@ public class Order {
     /*
      * Method Name : selectMeal()
      * Parameters : none
+     * Description : - allow the user to randomly generate their meals
+     */
+    public void autoGenerateMeal()
+    {
+         // As the user to select the category
+         displayCategoryMenu("Select a category to choose a meal from");
+        do 
+        {
+            // Switch case to specify the order 
+            switch (categoryChoiceId) {
+                case 1:
+                    Food breakfast = finder.findBreakfast(generateMealId(BREAKFAST_MENU));
+                    System.out.println("\n" + breakfast.toString());
+                    foodOrder.add(breakfast);
+                    break;
+                case 2:
+                    Food lunch = finder.findLunch(generateMealId(LUNCH_MENU));
+                    System.out.println("\n" + lunch.toString());
+                    foodOrder.add(lunch);
+                    break;
+                case 3:
+                    Food fastfood = finder.findFastFood(generateMealId(FASTFOOD_MENU));
+                    System.out.println("\n" + fastfood.toString());
+                    foodOrder.add(fastfood);
+                    break;
+                case 4:
+                    Snack snack = finder.findSnack(generateMealId(SNACK_MENU));
+                    System.out.println("\n" + snack.toString());
+                    snackOrder.add(snack);
+                    break;
+                case 5:
+                    Drink hot = finder.findHotDrink(generateMealId(HOT_DRINK_MENU));
+                    System.out.println("\n" + hot.toString());
+                    drinkOrder.add(hot);
+                    break;
+                case 6:
+                    Drink cold = finder.findColdDrink(generateMealId(COLD_DRINK_MENU));
+                    System.out.println("\n" + cold.toString());
+                    drinkOrder.add(cold);
+                    break;
+            }
+            // Ask the user if they want to add another meal or Proceed to order summary
+            displayCategoryMenu("\nSelect the category to choose your next meal from\n(ENTER 0 to proceed with your order)");
+        } while (categoryChoiceId != 0);
+    }
+
+    /*
+     * Method Name : selectMeal()
+     * Parameters : none
      * Description : - allow the user to manually choose their meals
      */
     public void selectMeal() 
-    { // As the user to select the category
-        System.out.println("Select the category to choose your meal from:");
-        int choiceId = Input.nextInt();
-        do {
+    {
+         // As the user to select the category
+        displayCategoryMenu("Select a category to choose a meal from");
+        do 
+        {
             // Switch case to specify the order 
-            switch (choiceId) {
+            switch (categoryChoiceId) {
                 case 1:
+                    displayMealMenu(categoryChoiceId);
                     Food breakfast = finder.findBreakfast(askMealId());
                     System.out.println("\n" + breakfast.toString());
                     foodOrder.add(breakfast);
                     break;
                 case 2:
+                    displayMealMenu(categoryChoiceId);
                     Food lunch = finder.findLunch(askMealId());
                     System.out.println("\n" + lunch.toString());
                     foodOrder.add(lunch);
                     break;
                 case 3:
+                    displayMealMenu(categoryChoiceId);
                     Food fastfood = finder.findFastFood(askMealId());
                     System.out.println("\n" + fastfood.toString());
                     foodOrder.add(fastfood);
                     break;
                 case 4:
+                    displayMealMenu(categoryChoiceId);
                     Snack snack = finder.findSnack(askMealId());
                     System.out.println("\n" + snack.toString());
                     snackOrder.add(snack);
                     break;
                 case 5:
+                    displayMealMenu(categoryChoiceId);
                     Drink hot = finder.findHotDrink(askMealId());
                     System.out.println("\n" + hot.toString());
                     drinkOrder.add(hot);
                     break;
                 case 6:
+                    displayMealMenu(categoryChoiceId);
                     Drink cold = finder.findColdDrink(askMealId());
                     System.out.println("\n" + cold.toString());
                     drinkOrder.add(cold);
                     break;
             }
-            // Ask the user if they want to add another meal
-            System.out.println("\nSelect the category to choose your next meal from:");
-            System.out.println("---- NOTE: If that is all you wish to order, ENTER 0 ----");
-            choiceId = Input.nextInt();
-        } while (choiceId != 0);
+            // Ask the user if they want to add another meal or Proceed to order summary
+            displayCategoryMenu("\nSelect the category to choose your next meal from\n(ENTER 0 to proceed with your order)");
+        } while (categoryChoiceId != 0);
     }
 
     /*
@@ -256,7 +329,7 @@ public class Order {
             }
         }
         // Display total cost of order
-        System.out.println("\nTOTAL : $ " + totalPrice);
+        System.out.println("\nTOTAL : $" + totalPrice);
 
     }
 
@@ -265,10 +338,16 @@ public class Order {
      * Parameters : none
      * Description : ask the user to enter the mealId for the item they choose
      */
-    public int askMealId() {
+    public int askMealId() 
+    {
         System.out.print("\nEnter the meal Id: ");
         int mealId = Input.nextInt();
         return mealId;
+    }
+
+    public int generateMealId(int sizeOfCategory)
+    {
+        return (int) Math.round(Math.random() * sizeOfCategory);
     }
 
     /*
