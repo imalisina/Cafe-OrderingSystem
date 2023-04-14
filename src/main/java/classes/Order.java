@@ -11,31 +11,31 @@ import classes.Snacks.Snacks;
 import classes.System.Input;
 import classes.System.Menu;
 
-public class Order {
+public class Order 
+{
     // attributes
     String title;
-    double totalPrice;
-    String pairing;
-    //Promotion discount;
+    private double totalPrice;
+    //private Promotion discount;
 
     // global variable to store user choice
-    int categoryChoiceId = 0;
+    private int categoryChoiceId = 0;
 
     // constants
-    final int BREAKFAST_MENU = 3;
-    final int LUNCH_MENU = 5;
-    final int FASTFOOD_MENU = 3;
-    final int SNACK_MENU = 6;
-    final int HOT_DRINK_MENU = 5;
-    final int COLD_DRINK_MENU = 5;
+    private final int BREAKFAST_MENU = 3;
+    private final int LUNCH_MENU = 5;
+    private final int FASTFOOD_MENU = 3;
+    private final int SNACK_MENU = 6;
+    private final int HOT_DRINK_MENU = 5;
+    private final int COLD_DRINK_MENU = 5;
 
     // Linked list to store collection of items per Order
-    LinkedList<Food> foodOrder = new LinkedList<Food>();
-    LinkedList<Drink> drinkOrder = new LinkedList<Drink>();
-    LinkedList<Snack> snackOrder = new LinkedList<Snack>();
+    private LinkedList<Food> foodOrder = new LinkedList<Food>();
+    private LinkedList<Drink> drinkOrder = new LinkedList<Drink>();
+    private LinkedList<Snack> snackOrder = new LinkedList<Snack>();
 
     // An instance of Finder class
-    Finder finder = new Finder();
+    private Finder finder = new Finder();
 
     /*
      * Constructor Name : Order()
