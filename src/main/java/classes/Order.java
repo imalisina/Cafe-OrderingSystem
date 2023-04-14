@@ -345,6 +345,11 @@ public class Order {
         return mealId;
     }
 
+    /*
+     * Method Name : generateMealId()
+     * Parameters : sizeOfCategory
+     * Description : generate random meal Id
+     */
     public int generateMealId(int sizeOfCategory)
     {
         return (int) Math.round(Math.random() * sizeOfCategory);
