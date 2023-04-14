@@ -12,7 +12,7 @@ public class Finder
     /*
      * Constructor Name : Finder()
      * parameters : none
-     * Description : Defailt constructor
+     * Description : Default constructor
      */
     public Finder()
     {
