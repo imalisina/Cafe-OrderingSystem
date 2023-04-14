@@ -1,4 +1,4 @@
-package classes;
+package classes.System;
 
 public class Menu {
 

@@ -1,12 +1,13 @@
 package classes.Drinks;
 
-import classes.Menu;
+import classes.Items;
 import classes.Enums.Category;
+import classes.System.Menu;
 
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-public class Drinks
+public class Drinks implements Items
 {
     // attributes
     // LinkedList data for all the Drink items
@@ -15,22 +16,33 @@ public class Drinks
     private LinkedList<Drink> coldDrinks = new LinkedList<Drink>();
 
     /*
-     * Constructor Name : Drinks()
+     * Constructor Name : Foods()
      * Parameters : none
-     * Description : Default constructor
+     * Description : default constructor
+     */
+    public Drinks()
+    {
+        itemSeeder();
+    }
+
+    /*
+     * Constructor Name : Drinks()
+     * Parameters : name
+     * Description : Alternate constructor
      */
     public Drinks(String name) 
     {
         new Menu(name);
-        drinkSeeder();
+        itemSeeder();
     }
     
     /*
      * Method Name : drinkSeeder()
      * Parameters : none
-     * Description : - create all drink objects
+     * Description : create all drink objects
      */
-    private void drinkSeeder()
+    @Override
+    public void itemSeeder()
     {
         allDrinks.add(new Drink("Saffron Tea", 3.99, 4, Category.HOT, "Bread"));
         allDrinks.add(new Drink("Sahlab", 4.99, 3, Category.HOT, "Ginger Biscuit"));
@@ -75,7 +87,7 @@ public class Drinks
         for (Drink coldDrink : allDrinks) 
         {
             // Check if the drink is a cold drink            
-            if (Category.HOT.equals(coldDrink.getCategory())) 
+            if (Category.COLD.equals(coldDrink.getCategory())) 
             {
                 // If the drink is cold, add it to the coldDrinks List
                 coldDrinks.add(coldDrink);
@@ -122,8 +134,7 @@ public class Drinks
         // initialize counter
         int i = 0;
         // iterate over each drink in the list 
-        while (coldDrinkListIterator.hasNext()) 
-        {
+        while (coldDrinkListIterator.hasNext()) {
             // Get the next cold drink in the list
             Drink coldDrink = coldDrinkListIterator.next();
             // Display details of the drink
@@ -135,5 +146,25 @@ public class Drinks
             // increment counter
             i++;
         }
+    }
+    
+    /*
+     * Method Name : findHotDrink()
+     * Parameters : id
+     * Description : return the hot drink at the given index
+     */
+    public Drink findHotDrink(int id)
+    {
+        return hotDrinks.get(id - 1);
+    }
+    
+    /*
+     * Method Name : findColdDrink()
+     * Parameters : id
+     * Description : return the cold drink at the given index
+     */
+    public Drink findColdDrink(int id)
+    {
+        return coldDrinks.get(id - 1);
     }
 }
