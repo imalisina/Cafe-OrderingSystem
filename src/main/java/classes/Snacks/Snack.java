@@ -14,7 +14,7 @@ public class Snack extends Item
      * Parameters : name, price, rating, size, quantity
      * Description : Alternate constructor
      */
-    public Snack(String name, double price, Category category, int rating, String size, int quantity) 
+    public Snack(String name, double price,int rating, Category category, String size, int quantity) 
     {
         super(name, price, rating, category);
         this.size = size;
