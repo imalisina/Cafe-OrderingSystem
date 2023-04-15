@@ -42,12 +42,11 @@ public class Snacks implements Items
     public void itemSeeder()
     {
         // Create snack objects
-        allSnacks.add(new Snack("Falafel", 6.99, Category.SNACK, 4, "Small", 4));
-        allSnacks.add(new Snack("Bandari Sausage", 4.99, Category.SNACK, 3, "Medium", 2));
-        allSnacks.add(new Snack("Çig Köfte", 3.49, Category.SNACK, 4, "Large", 1));
-        allSnacks.add(new Snack("Kalamata Olive Hummus", 4.99, Category.SNACK, 5, "Medium", 1));
-        allSnacks.add(new Snack("Biltong", 2.99, Category.SNACK, 4, "Small", 3));
-        allSnacks.add(new Snack("Brik", 1.99, Category.SNACK, 4, "Small", 3));
+        allSnacks.add(new Snack("French Fries", 2.99, 5,Category.SNACK,  "Large", 1));
+        allSnacks.add(new Snack("Çig Köfte", 3.49, 4,Category.SNACK,  "Large", 1));
+        allSnacks.add(new Snack("Biltong", 2.99, 4,Category.SNACK,  "Small", 3));
+        allSnacks.add(new Snack("Sponge Cake", 3.99, 4,Category.SNACK,  "Medium", 2));
+        allSnacks.add(new Snack("Pizza Cup", 5.99, 5,Category.SNACK,  "Small", 3));
     }
 
     /*
