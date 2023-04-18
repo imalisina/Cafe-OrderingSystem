@@ -13,7 +13,8 @@ public class Foods implements Items
 {
     // attributes
     // Hashmap data for all ingredients for each food item
-    protected HashMap<Integer, String> ingredients = new HashMap<Integer, String>();
+    public HashMap<Integer, String> ingredients = new HashMap<Integer, String>();
+
     // LinkedList data for all the Food items
     private LinkedList<Food> allFoods = new LinkedList<Food>();
     private LinkedList<Food> allBreakfasts = new LinkedList<Food>();
@@ -54,6 +55,8 @@ public class Foods implements Items
         allFoods.add(new Food("Milk Rice", 2.99, 4, Category.BREAKFAST));
         allFoods.add(new Food("Sholezad", 3.49, 4, Category.BREAKFAST));
         allFoods.add(new Food("Pap and Akara", 2.99, 3, Category.BREAKFAST));
+        allFoods.add(new Food("Kalamata Olive Hummus", 4.99, 5, Category.BREAKFAST));
+        allFoods.add(new Food("Bandari Sausage", 4.99, 3,Category.BREAKFAST));
         allFoods.add(new Food("Baghali polo", 4.49, 4, Category.LUNCH));
         allFoods.add(new Food("Fesenjan Stew", 2.99, 4, Category.LUNCH));
         allFoods.add(new Food("Döner",3.49, 4, Category.LUNCH));
@@ -62,19 +65,26 @@ public class Foods implements Items
         allFoods.add(new Food("Pide", 1.99, 4, Category.FASTFOOD));
         allFoods.add(new Food("Boerewors", 3.49, 3, Category.FASTFOOD));
         allFoods.add(new Food("Bunny Chow", 4.49, 5, Category.FASTFOOD));
+        allFoods.add(new Food("Falafel", 6.99, 4, Category.FASTFOOD));
+        allFoods.add(new Food("Shawarma", 5.99, 5, Category.FASTFOOD));
+        
         
         // Create ingredients for each food item
         ingredients.put(1, "Rice, Milk, Vanilla Extract");
         ingredients.put(2, "chick peas, Lentils, Spinach, Sour cream");
         ingredients.put(3, "Bread, cheese, chicken meat");
-        ingredients.put(4, "Corn, butter, milk");
-        ingredients.put(5, "Beef sausage, corriander, vinegar, variety of spices");
-        ingredients.put(6, "Rice, Lamb shops, fava beans, Dil weed");
-        ingredients.put(7, "Chicken/Duck, Walnuts, Pomegranate juice");
+        ingredients.put(4, "Olives, Hummus, variety of cardiments");
+        ingredients.put(5, "chicken/beef meat, butter, special sauces");
+        ingredients.put(6, "Beef sausage, corriander, vinegar, variety of spices");
+        ingredients.put(7, "Rice, Lamb shops, fava beans, Dil weed");
         ingredients.put(8, "Beef/lamb/chicken, Pita bread, Lettuce, Tomatoes, Garlic sauce, Hot peppers");
         ingredients.put(9, "Rice, Beef/lamb/chicken, Tomatoes, variety of spices");
-        ingredients.put(10, "Bread, curry sauce, potatoes, tomatoes, fresh herbs");
-        ingredients.put(11, "Rice, tomttoe sauce, variety of spices");
+        ingredients.put(10, "Rice, tomato sauce, variety of spices");
+        ingredients.put(11, "Ground Meat, cheese, egg, tomato");
+        ingredients.put(12, "Ground Meat, special herbs, tomato");
+        ingredients.put(13, "Bread, curry sauce, potatoes, tomatoes, fresh herbs");
+        ingredients.put(14, "Beef/lamb/chicken, fresh herbs");
+        ingredients.put(15, "Beef/lamb/chicken, special sauces, variety of vegetables");
     }
 
     /*
@@ -151,7 +161,7 @@ public class Foods implements Items
             // Get the next breakfast meal in the list
             Food breakfast = breakfastListIterator.next();
             // Display details of the meal
-            System.out.println("[" + (i + 1) + "] " + breakfast.toString());
+            System.out.println("[" + (i + 1) + "] " + breakfast.toString() + "\nIngredients : " + ingredients.get(i + 1));
             // Control the space in terminal
             if (i < allBreakfasts.size() - 1) {
                 System.out.println("");
@@ -178,7 +188,7 @@ public class Foods implements Items
             // Get the next lunch meal in the list
             Food lunch = lunchListIterator.next();
             // Display details of the meal
-            System.out.println("[" + (i + 1) + "] " + lunch.toString());
+            System.out.println("[" + (i + 1) + "] " + lunch.toString() + "\nIngredients : " + ingredients.get(i + 6));
             // Control the space in terminal
             if (i < allLunches.size() - 1) {
                 System.out.println("");
@@ -204,7 +214,7 @@ public class Foods implements Items
             // Get the next fast food meal in the list
             Food fastfood = fastfoodListIterator.next();
             // Display details of the meal
-            System.out.println("[" + (i + 1) + "] " + fastfood.toString());
+            System.out.println("[" + (i + 1) + "] " + fastfood.toString() + "\nIngredients : " + ingredients.get(i + 11));
             // Control the space in terminal
             if (i < allFastFoods.size() - 1) {
                 System.out.println("");

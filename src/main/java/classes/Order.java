@@ -1,5 +1,6 @@
 package classes;
 
+import java.text.DecimalFormat;
 import java.util.LinkedList;
 
 import classes.Drinks.Drink;
@@ -14,20 +15,13 @@ import classes.System.Menu;
 public class Order 
 {
     // attributes
-    String title;
     private double totalPrice;
-    //private Promotion discount;
 
     // global variable to store user choice
     private int categoryChoiceId = 0;
 
     // constants
-    private final int BREAKFAST_MENU = 3;
-    private final int LUNCH_MENU = 5;
-    private final int FASTFOOD_MENU = 3;
-    private final int SNACK_MENU = 6;
-    private final int HOT_DRINK_MENU = 5;
-    private final int COLD_DRINK_MENU = 5;
+    private final int CATEGORY_MENU_SIZE = 5;
 
     // Linked list to store collection of items per Order
     private LinkedList<Food> foodOrder = new LinkedList<Food>();
@@ -37,17 +31,8 @@ public class Order
     // An instance of Finder class
     private Finder finder = new Finder();
 
-    /*
-     * Constructor Name : Order()
-     * Parameters : title, price, pairing, discount
-     * Description : Alternate Constructor
-     */
-    // public Order(String title, double price, String pairing) 
-    // {
-    //     this.title = title;
-    //     this.price = price;
-    //     this.pairing = pairing;
-    // }
+    // An instance of Decimal format class
+    DecimalFormat formatter = new DecimalFormat("#.##");
 
     /*
      * Constructor Name : Order()
@@ -66,9 +51,14 @@ public class Order
      */
     public void placeOrder() 
     {
-        displayMenu();
-        displayOrderStyle();
-        displayOrderSummary();
+        // Loop through methods if the user does not confirm their order
+        do 
+        {
+            displayMenu();
+            displayOrderStyle();
+            displayOrderSummary();
+        } while (!confirmOrder());
+        System.out.println("\n------------- THANK YOU! -------------\n");
     }
 
     /*
@@ -81,7 +71,7 @@ public class Order
         // Loop through the code to allow the user to view different categories
         do {
             // display the Menu categories
-            displayCategoryMenu("Select a category to view from the Menu\n(ENTER 0 to Proceed to place your Order)");
+            displayCategoryMenu("View the Menu Categories (ENTER 0 to place your Order)");
             // Invoke the meal menu as per the selection
             displayMealMenu(categoryChoiceId);
         } while (categoryChoiceId != 0);
@@ -106,6 +96,7 @@ public class Order
         // display the prompt and ask user for input
         System.out.print("\n" + prompt + ": ");
         categoryChoiceId = Input.nextInt();
+
         // Make sure the user enters a valid input
         while (categoryChoiceId < 0 || categoryChoiceId > 6)
         {
@@ -150,7 +141,6 @@ public class Order
      */
     public void displayOrderStyle() 
     {
-        categoryChoiceId = 0;
         // Define all available menu options
         String[] options = { "Auto-Generate Meal", "Select Meal" };
 
@@ -163,6 +153,13 @@ public class Order
         // Ask user how they want to select their meal
         System.out.print("\nHow would you like to place your order: ");
         categoryChoiceId = Input.nextInt();
+
+        // Make sure the user enters the valid input
+        while (categoryChoiceId < 1 || categoryChoiceId > 2)
+        {
+            System.out.print("\nPlease enter 1 or 2: ");
+            categoryChoiceId = Input.nextInt();
+        }
 
         // Invoke the meal menu as per the selection
         displayOrderStyleMenu(categoryChoiceId);
@@ -197,39 +194,52 @@ public class Order
     public void autoGenerateMeal()
     {
          // As the user to select the category
-         displayCategoryMenu("Select a category to choose a meal from");
+         displayCategoryMenu("Select a meal from these categories");
+         // Loop through the code until the user is satisfied with their selection
         do 
         {
             // Switch case to specify the order 
             switch (categoryChoiceId) {
                 case 1:
-                    Food breakfast = finder.findBreakfast(generateMealId(BREAKFAST_MENU));
+                    // find and display the item requested by the user
+                    Food breakfast = finder.findBreakfast(generateMealId(CATEGORY_MENU_SIZE));
                     System.out.println("\n" + breakfast.toString());
+                    // Add the item to the specified list for the order summary
                     foodOrder.add(breakfast);
                     break;
                 case 2:
-                    Food lunch = finder.findLunch(generateMealId(LUNCH_MENU));
+                    // find and display the item requested by the user
+                    Food lunch = finder.findLunch(generateMealId(CATEGORY_MENU_SIZE));
                     System.out.println("\n" + lunch.toString());
+                    // Add the item to the specified list for the order summary
                     foodOrder.add(lunch);
                     break;
                 case 3:
-                    Food fastfood = finder.findFastFood(generateMealId(FASTFOOD_MENU));
+                    // find and display the item requested by the user
+                    Food fastfood = finder.findFastFood(generateMealId(CATEGORY_MENU_SIZE));
                     System.out.println("\n" + fastfood.toString());
+                    // Add the item to the specified list for the order summary
                     foodOrder.add(fastfood);
                     break;
                 case 4:
-                    Snack snack = finder.findSnack(generateMealId(SNACK_MENU));
+                    // find and display the item requested by the user
+                    Snack snack = finder.findSnack(generateMealId(CATEGORY_MENU_SIZE));
                     System.out.println("\n" + snack.toString());
+                    // Add the item to the specified list for the order summary
                     snackOrder.add(snack);
                     break;
                 case 5:
-                    Drink hot = finder.findHotDrink(generateMealId(HOT_DRINK_MENU));
+                    // find and display the item requested by the user
+                    Drink hot = finder.findHotDrink(generateMealId(CATEGORY_MENU_SIZE));
                     System.out.println("\n" + hot.toString());
+                    // Add the item to the specified list for the order summary
                     drinkOrder.add(hot);
                     break;
                 case 6:
-                    Drink cold = finder.findColdDrink(generateMealId(COLD_DRINK_MENU));
+                    // find and display the item requested by the user
+                    Drink cold = finder.findColdDrink(generateMealId(CATEGORY_MENU_SIZE));
                     System.out.println("\n" + cold.toString());
+                    // Add the item to the specified list for the order summary
                     drinkOrder.add(cold);
                     break;
             }
@@ -246,45 +256,58 @@ public class Order
     public void selectMeal() 
     {
          // As the user to select the category
-        displayCategoryMenu("Select a category to choose a meal from");
+         displayCategoryMenu("Select a category to choose a meal from");
+        // Loop through the code until the user is satisfied with their selection
         do 
         {
             // Switch case to specify the order 
             switch (categoryChoiceId) {
                 case 1:
                     displayMealMenu(categoryChoiceId);
+                    // find and display the item requested by the user
                     Food breakfast = finder.findBreakfast(askMealId());
                     System.out.println("\n" + breakfast.toString());
+                    // Add the item to the specified list for the order summary
                     foodOrder.add(breakfast);
                     break;
                 case 2:
                     displayMealMenu(categoryChoiceId);
+                    // find and display the item requested by the user
                     Food lunch = finder.findLunch(askMealId());
                     System.out.println("\n" + lunch.toString());
+                    // Add the item to the specified list for the order summary
                     foodOrder.add(lunch);
                     break;
                 case 3:
                     displayMealMenu(categoryChoiceId);
+                    // find and display the item requested by the user
                     Food fastfood = finder.findFastFood(askMealId());
                     System.out.println("\n" + fastfood.toString());
+                    // Add the item to the specified list for the order summary
                     foodOrder.add(fastfood);
                     break;
                 case 4:
                     displayMealMenu(categoryChoiceId);
+                    // find and display the item requested by the user
                     Snack snack = finder.findSnack(askMealId());
                     System.out.println("\n" + snack.toString());
+                    // Add the item to the specified list for the order summary
                     snackOrder.add(snack);
                     break;
                 case 5:
                     displayMealMenu(categoryChoiceId);
+                    // find and display the item requested by the user
                     Drink hot = finder.findHotDrink(askMealId());
                     System.out.println("\n" + hot.toString());
+                    // Add the item to the specified list for the order summary
                     drinkOrder.add(hot);
                     break;
                 case 6:
                     displayMealMenu(categoryChoiceId);
+                    // find and display the item requested by the user
                     Drink cold = finder.findColdDrink(askMealId());
                     System.out.println("\n" + cold.toString());
+                    // Add the item to the specified list for the order summary
                     drinkOrder.add(cold);
                     break;
             }
@@ -328,9 +351,40 @@ public class Order
                 totalPrice += snack.price;
             }
         }
-        // Display total cost of order
-        System.out.println("\nTOTAL : $" + totalPrice);
+        // Format price to 2 decimal places
+        String price = formatter.format(totalPrice);
+        // Display formatted total cost of order
+        System.out.println("\nTOTAL : $" + price);
 
+    }
+
+    /*
+     * Method Name : confirmOrder()
+     * Parameters : none
+     * Description : ask the user if they wish to confirm their order
+     */
+    private boolean confirmOrder()
+    {
+        System.out.print("\nWould you like to confirm your order? [Y/N]: ");
+        char confirm = Input.nextUpperChar();
+        // Make sure user enters valid input
+        while (confirm != 'Y' && confirm != 'N')
+        {
+            System.out.println("Please Enter Y/y or N/n");
+            confirm = Input.nextUpperChar();
+        }
+        // If the user confirms the order, return true
+        if (confirm == 'Y')
+        {
+            return true;
+        }
+        /* If the user does not confirm the order, empty the order summary lists
+         *  AND return false        
+         */ 
+        foodOrder.clear();
+        drinkOrder.clear();
+        snackOrder.clear();
+        return false;
     }
 
     /*
@@ -340,8 +394,15 @@ public class Order
      */
     public int askMealId() 
     {
+        // As the user to select a meal from the category Menu
         System.out.print("\nEnter the meal Id: ");
         int mealId = Input.nextInt();
+        // Make sure the user enters a valid input
+        while (mealId < 1 || mealId > 5)
+        {
+            System.out.print("\nPlease Enter a valid meal Id: ");
+            mealId = Input.nextInt();
+        }
         return mealId;
     }
 
@@ -352,7 +413,8 @@ public class Order
      */
     public int generateMealId(int sizeOfCategory)
     {
-        return (int) Math.round(Math.random() * sizeOfCategory);
+        return ((int) Math.round(Math.random() * (sizeOfCategory - 1))) + 1;
+        
     }
 
     /*
