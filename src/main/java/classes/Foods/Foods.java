@@ -225,32 +225,24 @@ public class Foods implements Items
     }
     
     /*
-     * Method Name : findBreakfast()
-     * Parameters : id
-     * Description : return the brekafast meal at the given index
+     * Method Name : find()
+     * Parameters : category, id
+     * Description : abstract Method to find item objects
      */
-    public Food findBreakfast(int id)
+    @Override
+    public Food find(String category, int id)
     {
-        return allBreakfasts.get(id - 1);
-    }
-
-    /*
-     * Method Name : findLunch()
-     * Parameters : id
-     * Description : return the lunch meal at the given index
-     */
-    public Food findLunch(int id)
-    {
-        return allLunches.get(id - 1);
-    }
-
-    /*
-     * Method Name : findFastFood()
-     * Parameters : id
-     * Description : return the fast food meal at the given index
-     */
-    public Food findFastFood(int id)
-    {
-        return allFastFoods.get(id - 1);
+        switch (category) 
+        {
+            case "Breakfast":
+                return allBreakfasts.get(id - 1);
+            case "Lunch":
+                return allLunches.get(id - 1);
+            case "Fast Food":
+                return allFastFoods.get(id - 1);
+        }
+        System.out.println("[ERROR]");
+        System.exit(1);
+        return null;
     }
 }
