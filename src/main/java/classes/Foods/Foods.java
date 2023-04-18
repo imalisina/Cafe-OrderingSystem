@@ -243,6 +243,4 @@ public class Foods implements Items
     {
         return allFastFoods.get(id - 1);
     }
-
-    
 }

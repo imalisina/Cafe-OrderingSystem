@@ -9,3 +9,5 @@ public interface Items
      */
     public abstract void itemSeeder();
 }
+
+// add finder method there by adding category as parameter

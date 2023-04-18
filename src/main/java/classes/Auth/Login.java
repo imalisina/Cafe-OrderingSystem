@@ -13,7 +13,7 @@ public class Login {
     private String extractedUsername, extractedPassword = "";
 
     // An instance of FileHanlder object
-    FileHandler fileReader = new FileHandler();
+    private FileHandler fileReader = new FileHandler();
 
     /*
      * Constructor Name : Login()
