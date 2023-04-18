@@ -413,7 +413,8 @@ public class Order
      */
     public int generateMealId(int sizeOfCategory)
     {
-        return (int) Math.round(Math.random() * sizeOfCategory);
+        return ((int) Math.round(Math.random() * (sizeOfCategory - 1))) + 1;
+        
     }
 
     /*
