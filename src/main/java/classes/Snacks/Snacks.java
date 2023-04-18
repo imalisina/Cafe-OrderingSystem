@@ -70,13 +70,23 @@ public class Snacks implements Items
     }
     
     /*
-     * Method Name : findSnack()
-     * Parameters : id
-     * Description : return the snack at the given index
+     * Method Name : find()
+     * Parameters : category, id
+     * Description : abstract Method to find item objects
      */
-    public Snack findSnack(int id)
+    @Override
+    public Snack find(String category, int id)
     {
-        return allSnacks.get(id - 1);
+        if (category.equalsIgnoreCase(category))
+        {
+            return allSnacks.get(id - 1);
+        }
+        else
+        {
+            System.out.println("[ERROR]");
+            System.exit(1);
+            return null;
+        }
     }
 
     /*
