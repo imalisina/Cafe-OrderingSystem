@@ -48,7 +48,7 @@ public class Login {
         }
     }
 
-        /*
+    /*
      * Method Name : checkUserSession()
      * Parameters : none
      * Description : Method to check the existance of entered username and password in login operation
