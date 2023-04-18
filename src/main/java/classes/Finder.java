@@ -28,7 +28,7 @@ public class Finder
     {
         Foods breakfast = new Foods();
         breakfast.filterBreakfastMeals();
-        return breakfast.findBreakfast(id);
+        return breakfast.find("Breakfast",id);
     }
 
     /*
@@ -41,7 +41,7 @@ public class Finder
     {
         Foods lunch = new Foods();
         lunch.filterLunchMeals();
-        return lunch.findLunch(id);
+        return lunch.find("Lunch", id);
     }
 
     /*
@@ -54,7 +54,7 @@ public class Finder
     {
         Foods fastfood = new Foods();
         fastfood.filterFastFoodMeals();
-        return fastfood.findFastFood(id);
+        return fastfood.find("Fast Food", id);
     }
 
     /*
@@ -66,7 +66,7 @@ public class Finder
     public Snack findSnack(int id)
     {
         Snacks snack = new Snacks();
-        return snack.findSnack(id);
+        return snack.find("Snack", id);
     }
 
     /*
@@ -79,7 +79,7 @@ public class Finder
     {
         Drinks hot = new Drinks();
         hot.filterHotDrinks();
-        return hot.findHotDrink(id);
+        return hot.find("Hot", id);
     }
 
     /*
@@ -92,6 +92,6 @@ public class Finder
     {
         Drinks cold = new Drinks();
         cold.filterColdDrinks();
-        return cold.findColdDrink(id);
+        return cold.find("Cold", id);
     }
 }
