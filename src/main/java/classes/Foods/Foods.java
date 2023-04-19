@@ -241,7 +241,7 @@ public class Foods implements Items
             case "Fast Food":
                 return allFastFoods.get(id - 1);
         }
-        System.out.println("[ERROR]");
+        System.out.println("[ERROR] meal not found !");
         System.exit(1);
         return null;
     }

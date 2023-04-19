@@ -21,16 +21,13 @@ public class Users {
     private LinkedList<User> customers = new LinkedList<User>(); 
 
     // An instance of Register class
-    Register createAccount;
+    private Register createAccount;
 
     // An instance of Login class
-    Login loginToAccount;
+    private Login loginToAccount;
 
     // An instance of FileHandler class
-    FileHandler fileHanlder = new FileHandler();
-
-    // An instance of Input class
-    Input input = new Input();
+    private FileHandler fileHanlder = new FileHandler();
 
     /*
      * Constructor Name : Users()
