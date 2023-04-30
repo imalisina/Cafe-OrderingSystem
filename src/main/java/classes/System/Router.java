@@ -37,7 +37,7 @@ public class Router {
      * Description: validating entered menu option
      */
     public static void routerValidator () {
-        if ((router != 1) && (router != 2)) {
+        if ((router != 1) && (router != 2) && (router != 3)) {
             System.out.println("Invalid option! Please try again.");
             System.exit(0);
         } else {

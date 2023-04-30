@@ -1,6 +1,10 @@
+import java.security.NoSuchAlgorithmException;
+
+import classes.Order;
 import classes.System.Input;
 import classes.System.Menu;
 import classes.System.Router;
+import classes.Users.Users;
 
 public class Main {
     // Declare & initialize program name
@@ -11,7 +15,13 @@ public class Main {
     // New instance of Router class
     static Router newRouter;
 
-    public static void main(String[] args) { 
+    // New instance of Users group class
+    static Users customers;
+
+    // New instance of Order class
+    static Order customerOrder = new Order();
+
+    public static void main(String[] args) throws NoSuchAlgorithmException { 
         // Operations
         welcomeMessage();
         displayAuthMenu();
@@ -23,12 +33,16 @@ public class Main {
         System.out.println("[INFO] Option " + newRouter.getRouter() + " selected.");
         newRouter = new Router(true);
 
+        customers = new Users();
+
         switch(newRouter.getRouter()) {
             case 1:
-                // ADD REGISTRATION OPERATION
+                customers.registerOperation();
+                handleMainActions();
                 break;
             case 2:
-                // ADD LOGIN OPERATION
+                customers.loginOperation();
+                handleMainActions();
                 break;
         }
     }
@@ -56,6 +70,17 @@ public class Main {
     }
 
     /*
+     * Method Name : displayActionMenu()
+     * Parameters : none
+     * Description : display the program's action menu
+    */
+    public static void displayActionMenu() {
+        Menu actionMenu = new Menu("Features");
+        String[] actionMenuItems = {"Get Account Details", "Place an Order", "Settings"};
+        actionMenu.showMenu(actionMenuItems);
+    }
+
+    /*
     * Method name: sendRouter
     * Parameters: none
     * Description: gets router input from users
@@ -67,5 +92,33 @@ public class Main {
         newRouter = new Router();
         router = Input.nextInt();
         newRouter.setRouter(router);
+    }
+
+    /*
+    * Method name: handleMainActions
+    * Parameters: none
+    * Description: handle main features of the program
+    */
+    public static void handleMainActions() throws NoSuchAlgorithmException {
+        // Call the method to display main action menu
+        displayActionMenu();
+        // Activate the router processes
+        callRouter();
+        // Display an info message in terminal
+        System.out.println("[INFO] Option " + newRouter.getRouter() + " selected.");
+        newRouter = new Router(true);
+        
+        // Check the cases and redirect user to the correct action
+        switch (newRouter.getRouter()) {
+            case 1:
+                System.out.println(customers.allUsers.get(1));
+                break;
+            case 2:
+                customerOrder.placeOrder();
+                break;
+            case 3:
+                customers.editProfileHandler();           
+                break;
+        }
     }
 }
