@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 import classes.Order;
@@ -22,7 +23,7 @@ public class Main {
     // New instance of Order class
     static Order customerOrder = new Order();
 
-    public static void main(String[] args) throws NoSuchAlgorithmException { 
+    public static void main(String[] args) throws NoSuchAlgorithmException, IOException { 
         // Operations
         welcomeMessage();
         displayAuthMenu();
@@ -121,4 +122,5 @@ public class Main {
                 customers.editProfileHandler();           
                 break;
         }
+}
 }
