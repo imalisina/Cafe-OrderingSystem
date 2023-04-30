@@ -13,7 +13,7 @@ public class Login {
     private String extractedUsername, extractedPassword = "";
 
     // An instance of FileHanlder object
-    FileHandler fileReader = new FileHandler();
+    private FileHandler fileReader = new FileHandler();
 
     /*
      * Constructor Name : Login()
@@ -48,7 +48,7 @@ public class Login {
         }
     }
 
-        /*
+    /*
      * Method Name : checkUserSession()
      * Parameters : none
      * Description : Method to check the existance of entered username and password in login operation

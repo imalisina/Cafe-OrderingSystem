@@ -32,7 +32,7 @@ public class Order
     private Finder finder = new Finder();
 
     // An instance of Decimal format class
-    DecimalFormat formatter = new DecimalFormat("#.##");
+    private DecimalFormat formatter = new DecimalFormat("#.##");
 
     /*
      * Constructor Name : Order()

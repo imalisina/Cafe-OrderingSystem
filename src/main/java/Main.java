@@ -7,6 +7,7 @@ import classes.System.Router;
 import classes.Users.Users;
 
 public class Main {
+
     // Declare & initialize program name
     private static final String PROGRAM_NAME = "Persian Nights - Cafe Ordering System";
     private static final String DEVELOPER_NAME_ONE = "Alisina Br.";
@@ -120,5 +121,4 @@ public class Main {
                 customers.editProfileHandler();           
                 break;
         }
-    }
 }

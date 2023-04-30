@@ -1,5 +1,6 @@
 package classes.Users;
 
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.LinkedList;
 import java.util.ListIterator;
@@ -20,16 +21,13 @@ public class Users {
     private LinkedList<User> customers = new LinkedList<User>(); 
 
     // An instance of Register class
-    Register createAccount;
+    private Register createAccount;
 
     // An instance of Login class
-    Login loginToAccount;
+    private Login loginToAccount;
 
     // An instance of FileHandler class
-    FileHandler fileHanlder = new FileHandler();
-
-    // An instance of Input class
-    Input input = new Input();
+    private FileHandler fileHanlder = new FileHandler();
 
     /*
      * Constructor Name : Users()
@@ -45,7 +43,7 @@ public class Users {
      * Parameters : none
      * Description : Method to activate registration operation
     */
-    public void registerOperation () throws NoSuchAlgorithmException {
+    public void registerOperation () throws NoSuchAlgorithmException, IOException {
         // Activte Register object
         createAccount = new Register();
 
@@ -123,7 +121,7 @@ public class Users {
      * Parameters : validatedUsername, validatedPassword 
      * Description : Method to create a session for user that will be used in further Login requests
     */
-    public void createUserSession(String validatedUsername, String validatedPassword) {
+    public void createUserSession(String validatedUsername, String validatedPassword) throws IOException {
         fileHanlder.writeOnFile(validatedUsername, validatedPassword);
     }
 
@@ -137,13 +135,13 @@ public class Users {
         int choiceId = 0;
         // Define all available menu options
         String[] settingOptions = {"Change Full name" , "Change Username" , "Change Email" , "Reset Password" , "Delete Account"};
-
-        // An instance of Menu object
-        Menu settingMenu = new Menu("Settings");
         
         // Define a temporary boolean variable to check whether user wants to change other details
         boolean editAgain = true;
         do {
+        // An instance of Menu object
+        Menu settingMenu = new Menu("Settings");
+        
         // Display a list of available options to the user for edit profile
         settingMenu.showMenu(settingOptions);
 

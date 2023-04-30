@@ -2,6 +2,7 @@ package classes.System;
 
 // import the Scanner class from the java.util package
 import java.util.*;
+
 public class Input
 {
     // Initialise the scanner object "in" with the System.in stream

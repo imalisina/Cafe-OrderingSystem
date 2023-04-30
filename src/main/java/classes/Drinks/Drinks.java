@@ -149,22 +149,22 @@ public class Drinks implements Items
     }
     
     /*
-     * Method Name : findHotDrink()
-     * Parameters : id
-     * Description : return the hot drink at the given index
+     * Method Name : find()
+     * Parameters : category, id
+     * Description : abstract Method to find item objects
      */
-    public Drink findHotDrink(int id)
+    @Override
+    public Drink find(String category, int id)
     {
-        return hotDrinks.get(id - 1);
-    }
-    
-    /*
-     * Method Name : findColdDrink()
-     * Parameters : id
-     * Description : return the cold drink at the given index
-     */
-    public Drink findColdDrink(int id)
-    {
-        return coldDrinks.get(id - 1);
+        switch (category) 
+        {
+            case "Cold":
+                return coldDrinks.get(id - 1);
+            case "Hot":
+                return hotDrinks.get(id - 1);
+        }
+        System.out.println("[ERROR]");
+        System.exit(1);
+        return null;
     }
 }
